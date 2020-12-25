@@ -1,5 +1,6 @@
 import React from 'react'
 import Trail from '../components/Trail'
+import { Switch, Route } from 'react-router-dom'
 
 class TrailsList extends React.Component {
 
@@ -8,7 +9,7 @@ class TrailsList extends React.Component {
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/trails")
+        fetch("http://localhost:4000/trails")
             .then(r => r.json())
             .then(trailsArray => {
                 this.setState({allTrails: trailsArray})
@@ -21,11 +22,20 @@ class TrailsList extends React.Component {
     
     render(){
         return(
-        this.allTrails()
-    )
+            <Switch>
+                <Route path="/trails/new" render={() => <h1>add trail form</h1>}/>
+                <Route path="/trails/:id" render={() => <h1>trail show page</h1>}/>
+                <Route path="/trails" render={() => {
+                    if (this.state.allTrails.length > 0) {
+                        return this.allTrails()
+                    } else {
+                        return <h2>Loading</h2>
+                    }
+                }}/>
+            </Switch>
+        )
     }
     
-
 }
 
 export default TrailsList
