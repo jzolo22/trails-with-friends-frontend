@@ -11,7 +11,6 @@ const rootReducer = () => ({ trails: [] })
 
 const store = createStore(rootReducer)
 
-console.log(store.getState())
 
 
 ReactDOM.render(
@@ -19,7 +18,8 @@ ReactDOM.render(
   <BrowserRouter>
     <App />
   </BrowserRouter>
-  </Provider>,
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
