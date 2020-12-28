@@ -1,10 +1,14 @@
 import './App.css';
-import MainContainer from './containers/MainContainer'
+import TrailsList from './containers/TrailsList'
+import { Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <MainContainer />
+    <div>
+      <Switch>
+            <Route path="/trails" render={() => <TrailsList />} />
+            <Route path="/" render={() => <h1>Login Page</h1>}/>
+        </Switch>
     </div>
   );
 }
