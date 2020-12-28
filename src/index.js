@@ -7,7 +7,16 @@ import { BrowserRouter } from 'react-router-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-const rootReducer = () => ({ trails: [] })
+const rootReducer = (currentState = {trails: []}, action) => {
+  console.log("current state: ", currentState)
+  console.log("action type: ", action.type)
+  switch (action.type) {
+    case "add form":
+      return {trails: []}
+    default:
+      return currentState
+  }
+}
 
 const store = createStore(rootReducer)
 

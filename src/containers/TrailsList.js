@@ -23,7 +23,7 @@ class TrailsList extends React.Component {
     }
     
     render(){
-        console.log("TrailsList Props: ", this.props)
+        // console.log("TrailsList Props: ", this.props)
         return(
             <Switch>
                 <Route path="/trails/new" render={() => <TrailForm />}/>
@@ -43,7 +43,7 @@ class TrailsList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("Current redux state", state)
+    // console.log("Current redux state", state)
     return { trails: state.trails }
 }
 

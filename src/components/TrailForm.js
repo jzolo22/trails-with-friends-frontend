@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 class TrailForm extends React.Component {
 
@@ -16,15 +17,15 @@ class TrailForm extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.submitHandler()
 
-        this.setState({
-            name: "",
-            length: "",
-            location: "",
-            duration: "",
-            difficulty: ""
-        })
+        // this.setState({
+        //     name: "",
+        //     length: "",
+        //     location: "",
+        //     duration: "",
+        //     difficulty: ""
+        // })
     }
     
     render() {
@@ -41,4 +42,8 @@ class TrailForm extends React.Component {
     }
 }
 
-export default TrailForm
+const mdp = (dispatch) => {
+    return {submitHandler: () => dispatch({type: "add form"})}
+}
+
+export default connect(null, mdp)(TrailForm)
