@@ -17,7 +17,7 @@ class TrailForm extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        this.props.submitHandler()
+        this.props.submitHandler(this.state)
 
         // this.setState({
         //     name: "",
@@ -43,7 +43,7 @@ class TrailForm extends React.Component {
 }
 
 const mdp = (dispatch) => {
-    return {submitHandler: () => dispatch({type: "add form"})}
+    return {submitHandler: (trailObj) => dispatch({type: "add form", payload: trailObj}) }
 }
 
 export default connect(null, mdp)(TrailForm)

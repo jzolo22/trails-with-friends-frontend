@@ -19,7 +19,7 @@ class TrailsList extends React.Component {
     // }
 
     allTrails = () => {
-        return this.state.allTrails.map(trail => <Trail key={trail.id} trailObj={trail} />)
+        return this.props.trails.map(trail => <Trail key={trail.id} trailObj={trail} />)
     }
     
     render(){
@@ -29,12 +29,13 @@ class TrailsList extends React.Component {
                 <Route path="/trails/new" render={() => <TrailForm />}/>
                 <Route path="/trails/:id" render={() => <h1>trail show page</h1>}/>
                 <Route path="/trails" render={() => {
-                    if (this.state.allTrails.length > 0) {
-                        // return this.allTrails()
-                        return <h2> loading</h2>
-                    } else {
-                        return <h2>Loading</h2>
-                    }
+                    return (
+                        <>
+                       <TrailForm />
+                        {this.allTrails()}
+                        </>
+                    )
+                    
                 }}/>
             </Switch>
         )

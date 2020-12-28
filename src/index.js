@@ -8,14 +8,14 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 const rootReducer = (currentState = {trails: []}, action) => {
-  console.log("current state: ", currentState)
-  console.log("action type: ", action.type)
+  // console.log("action: ", action)
   switch (action.type) {
     case "add form":
-      return {trails: []}
-    default:
-      return currentState
-  }
+      return {...currentState, trails: [...currentState.trails, action.payload]}
+      default:
+        return currentState
+      }
+      // console.log("current state: ", currentState)
 }
 
 const store = createStore(rootReducer)
