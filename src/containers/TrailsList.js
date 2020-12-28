@@ -1,5 +1,6 @@
 import React from 'react'
 import Trail from '../components/Trail'
+import TrailForm from '../components/TrailForm'
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -22,9 +23,10 @@ class TrailsList extends React.Component {
     }
     
     render(){
+        console.log("TrailsList Props: ", this.props)
         return(
             <Switch>
-                <Route path="/trails/new" render={() => <h1>add trail form</h1>}/>
+                <Route path="/trails/new" render={() => <TrailForm />}/>
                 <Route path="/trails/:id" render={() => <h1>trail show page</h1>}/>
                 <Route path="/trails" render={() => {
                     if (this.state.allTrails.length > 0) {
@@ -42,6 +44,7 @@ class TrailsList extends React.Component {
 
 const mapStateToProps = (state) => {
     console.log("Current redux state", state)
+    return { trails: state.trails }
 }
 
 export default connect(mapStateToProps)(TrailsList)
