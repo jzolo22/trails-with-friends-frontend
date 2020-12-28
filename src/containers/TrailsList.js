@@ -3,6 +3,7 @@ import Trail from '../components/Trail'
 import TrailForm from '../components/TrailForm'
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import {getTrails} from '../redux/actions'
 
 class TrailsList extends React.Component {
 
@@ -10,13 +11,9 @@ class TrailsList extends React.Component {
     //     allTrails: []
     // }
 
-    // componentDidMount(){
-    //     fetch("http://localhost:4000/trails")
-    //         .then(r => r.json())
-    //         .then(trailsArray => {
-    //             this.setState({allTrails: trailsArray})
-    //         })
-    // }
+    componentDidMount(){
+        this.props.fetchNotes()
+    }
 
     allTrails = () => {
         return this.props.trails.map(trail => <Trail key={trail.id} trailObj={trail} />)
@@ -48,4 +45,8 @@ const mapStateToProps = (state) => {
     return { trails: state.trails }
 }
 
-export default connect(mapStateToProps)(TrailsList)
+const mapDispatchToProps = (dispatch) => {
+    return {fetchNotes: () => dispatch(getTrails())}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrailsList)

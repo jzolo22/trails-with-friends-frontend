@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addTrail } from '../redux/actions'
 
 class TrailForm extends React.Component {
 
@@ -43,7 +44,7 @@ class TrailForm extends React.Component {
 }
 
 const mdp = (dispatch) => {
-    return {submitHandler: (trailObj) => dispatch({type: "add form", payload: trailObj}) }
+    return {submitHandler: (trailObj) => dispatch(addTrail(trailObj)) }
 }
 
 export default connect(null, mdp)(TrailForm)
