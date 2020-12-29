@@ -18,7 +18,7 @@ export const getTrails = () => {
         console.log("nested function invoked")
         fetch("http://localhost:3000/trails")
             .then(r => r.json())
-            .then(data => dispatch({type: "add_trails_from_fetch", payload: data}))
+            .then(trailsArr => dispatch({type: "add_trails_from_fetch", payload: trailsArr}))
     }
 }
 
