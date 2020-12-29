@@ -7,17 +7,9 @@ import { BrowserRouter } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
+import rootReducer from './redux/reducer'
 
-const rootReducer = (currentState = {trails: []}, action) => {
-  // console.log("action: ", action)
-  switch (action.type) {
-    case "add form":
-      return {...currentState, trails: [...currentState.trails, action.payload]}
-      default:
-        return currentState
-      }
-      // console.log("current state: ", currentState)
-}
+
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
