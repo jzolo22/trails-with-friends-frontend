@@ -2,29 +2,68 @@
 import React from 'react'
 import {NavLink, Route, Switch} from 'react-router-dom'
 import NewUserForm from './NewUserForm'
+import Profile from './Profile'
 import LoginForm from './LoginForm'
-
-function HomePage() {
-
-    
+import { connect } from 'react-redux'
+import {getUsers} from '../redux/actions'
 
 
-    return (
-        <div>
-            <Switch>
-                <Route path="/users/new" render={() => <NewUserForm />} />
-                <Route path="/" render={(routerProps) => 
-                        <>
-                            <NavLink to="/users/new">
-                                Signup!
-                            </NavLink>
-                            <LoginForm routerProps={routerProps} />
-                        </>
-                    } 
-                />
-            </Switch>
-        </div>
+class HomePage extends React.Component {
+
+    componentDidMount() {
+        this.props.fetchUsers()
+    }
+
+    allUsers = () => {
+        return this.props.users.map(user => {
+            return(
+            <NavLink to={`/users/${user.id}`}>
+                <li>{user.name}</li>
+            </NavLink>
+            )
+        })
+    }
+
+    // <Profile key={user.id} userObj={user} />
+
+    render() {
+        console.log(this.props)
+        return (
+            <div>
+                <Switch>
+                    <Route path="/users/new" render={() => <NewUserForm />} />
+                    <Route path="/users/:id" render={(routerProps) => {
+                        const id = parseInt(routerProps.match.params.id)
+                        let user = this.props.users.find(user => user.id === id)
+
+                        if (user) {
+                            return <Profile userObj={user}/>
+                        } else {
+                            return <h2>Loading...</h2>
+                        }
+                    }} />
+                    <Route path="/" render={(routerProps) => 
+                            <>
+                                <NavLink to="/users/new">
+                                    Signup!
+                                </NavLink>
+                                <LoginForm routerProps={routerProps} />
+                                {this.allUsers()}
+                            </>
+                        } 
+                    />
+                </Switch>
+            </div>
     )
+    }
 }
 
-export default HomePage
+const msp = (state) => {
+    return { users: state.users }
+}
+
+const mdp = (dispatch) => {
+    return {fetchUsers: () => dispatch(getUsers())}
+}
+
+export default connect(msp, mdp)(HomePage)

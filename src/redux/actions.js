@@ -49,3 +49,10 @@ export const loginUser = (userInfo) => {
     }   
 }
 
+export const getUsers = () => {
+    return function (dispatch) {
+        fetch("http://localhost:3000/users")
+            .then(r => r.json())
+            .then(usersArr => dispatch({type: "add_users_from_fetch", payload: usersArr}))
+    }
+}

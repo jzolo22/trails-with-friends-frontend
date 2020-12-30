@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 
 const initialState = {
     trails: [],
-    user: null
+    user: null,
+    users: []
 }
 
 function trailsReducer(state = initialState.trails, action) {
@@ -18,7 +19,7 @@ function trailsReducer(state = initialState.trails, action) {
     }
 }
 
-function usersReducer(state = initialState.user, action) {
+function userReducer(state = initialState.user, action) {
     switch (action.type) {
         case "create user":
             return action.payload
@@ -30,11 +31,19 @@ function usersReducer(state = initialState.user, action) {
     }
 }
 
-// usersReducer
+function usersReducer(state = initialState.users, action) {
+    switch (action.type) {
+        case "add_users_from_fetch":
+            return action.payload
+        default:
+            return state
+    }
+}
 
 const rootReducer = combineReducers({
     trails: trailsReducer,
-    user: usersReducer
+    user: userReducer,
+    users: usersReducer
 })
 
 export default rootReducer 
