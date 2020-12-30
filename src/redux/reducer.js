@@ -22,6 +22,8 @@ function usersReducer(state = initialState.user, action) {
     switch (action.type) {
         case "create user":
             return action.payload
+        case "login user":
+            return action.payload
             
         default:
             return state

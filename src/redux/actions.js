@@ -22,7 +22,6 @@ export const getTrails = () => {
 }
 
 export const newUser = (userObj) => {
-    
     return function (dispatch) {
         fetch("http://localhost:3000/users", {
             method: "POST",
@@ -31,6 +30,18 @@ export const newUser = (userObj) => {
         })
             .then(r => r.json())
             .then((userObj) => dispatch({type: "create user", payload: userObj}))
+    }   
+}
+
+export const loginUser = (userInfo) => {
+    return function (dispatch) {
+        fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(userInfo)
+        })
+            .then(r => r.json())
+            .then((userInfo) => dispatch({type: "login user", payload: userInfo}))
     }   
 }
 
