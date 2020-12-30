@@ -10,19 +10,8 @@ class LoginForm extends Component {
         password: "", 
     }
 
-    componentDidMount = () => {
-        const token = localStorage.getItem("token")
-        if (token) {
-          fetch("http://localhost:3000/profile", {
-            method: "GET",
-            headers: {Authorization: `Bearer ${token}`} 
-          })
-            .then(r => r.json())
-            .then((user) => console.log("user in login form", user))
-      } else {
-        this.props.history.push('/users/new')
-      }
-    }
+
+    
 
     onChange = (e) => {
         this.setState({[e.target.name]: e.target.value})

@@ -13,12 +13,12 @@ function HomePage() {
         <div>
             <Switch>
                 <Route path="/users/new" render={() => <NewUserForm />} />
-                <Route path="/" render={() => 
+                <Route path="/" render={(routerProps) => 
                         <>
                             <NavLink to="/users/new">
                                 Signup!
                             </NavLink>
-                            <LoginForm />
+                            <LoginForm routerProps={routerProps} />
                         </>
                     } 
                 />
