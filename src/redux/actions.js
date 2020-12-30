@@ -12,9 +12,9 @@ export const addTrail = (trailObj) => {
 }
 
 export const getTrails = () => {
-    console.log("first dispatch invoked")
+    // console.log("first dispatch invoked")
     return function (dispatch) {
-        console.log("nested function invoked")
+        // console.log("nested function invoked")
         fetch("http://localhost:3000/trails")
             .then(r => r.json())
             .then(trailsArr => dispatch({type: "add_trails_from_fetch", payload: trailsArr}))
@@ -41,7 +41,11 @@ export const loginUser = (userInfo) => {
             body: JSON.stringify(userInfo)
         })
             .then(r => r.json())
-            .then((userInfo) => dispatch({type: "login user", payload: userInfo}))
+            .then((userInfo) => {
+                // console.log(userInfo)
+                localStorage.setItem("token", userInfo.jwt)
+                dispatch({type: "login user", payload: userInfo})
+            })
     }   
 }
 

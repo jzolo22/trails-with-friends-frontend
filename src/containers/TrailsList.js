@@ -12,7 +12,7 @@ class TrailsList extends React.Component {
     // }
 
     componentDidMount(){
-        this.props.fetchNotes()
+        this.props.fetchTrails()
     }
 
     allTrails = () => {
@@ -46,7 +46,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {fetchNotes: () => dispatch(getTrails())}
+    return {fetchTrails: () => dispatch(getTrails())}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrailsList)

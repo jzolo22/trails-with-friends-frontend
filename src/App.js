@@ -5,6 +5,9 @@ import TrailsList from './containers/TrailsList'
 import HomePage from './components/HomePage'
 
 function App() {
+
+  
+
   return (
     <div>
       <Switch>
