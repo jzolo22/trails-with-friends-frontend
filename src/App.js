@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
       <Switch>
-            <Route path="/trails" render={() => <TrailsList />} />
-            <Route path="/" render={() => <HomePage />}/>
-        </Switch>
+        <Route path="/trails" render={() => <TrailsList />} />
+        <Route path="/" render={() => <HomePage />}/>
+      </Switch>
     </div>
   );
 }

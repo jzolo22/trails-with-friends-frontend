@@ -1,5 +1,5 @@
 export const addTrail = (trailObj) => {
-    
+
     return function (dispatch) {
         fetch("http://localhost:3000/trails", {
             method: "POST",
@@ -8,8 +8,7 @@ export const addTrail = (trailObj) => {
         })
             .then(r => r.json())
             .then((trailObj) => dispatch({type: "add form", payload: trailObj}))
-    }
-    
+    }   
 }
 
 export const getTrails = () => {
@@ -20,5 +19,18 @@ export const getTrails = () => {
             .then(r => r.json())
             .then(trailsArr => dispatch({type: "add_trails_from_fetch", payload: trailsArr}))
     }
+}
+
+export const newUser = (userObj) => {
+    
+    return function (dispatch) {
+        fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(userObj)
+        })
+            .then(r => r.json())
+            .then((userObj) => dispatch({type: "create user", payload: userObj}))
+    }   
 }
 

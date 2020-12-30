@@ -41,7 +41,7 @@ class TrailsList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log("Current redux state", state)
+    console.log("Current redux state", state)
     return { trails: state.trails }
 }
 
