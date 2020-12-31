@@ -10,11 +10,9 @@ class Navbar extends Component {
         refresh: ""
     }
     
-    logout = (e) => {
+    localLogout = (e) => {
         console.log(this.props)
-        localStorage.removeItem("token")
-        this.setState({refresh: ""})
-        this.props.history.push('/')
+        this.props.logout()
     }
     
     render() {
@@ -32,7 +30,7 @@ class Navbar extends Component {
                     <NavLink to={`/users/${this.props.user.user.id}`}>
                         <span>Hello {this.props.user.user.name}</span>
                     </NavLink>
-                    <span onClick={this.logout}>Logout</span>
+                    <span onClick={this.localLogout}>Logout</span>
                     </>
                  : 
                     <>
@@ -49,9 +47,7 @@ class Navbar extends Component {
     }
 }
 
-// const msp = (state) => {
-//     return { user: state.user }
-// }
+
 
 // connect(msp)
 

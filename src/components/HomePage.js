@@ -17,7 +17,7 @@ class HomePage extends React.Component {
     allUsers = () => {
         return this.props.users.map(user => {
             return(
-            <NavLink to={`/users/${user.id}`}>
+            <NavLink to={`/users/${user.id}`} key={user.id}>
                 <li>{user.name}</li>
             </NavLink>
             )
@@ -37,20 +37,24 @@ class HomePage extends React.Component {
                         let user = this.props.users.find(user => user.id === id)
 
                         if (user) {
-                            return <Profile userObj={user}/>
+                            return <Profile userObj={user} />
                         } else {
                             return <h2>Loading...</h2>
                         }
                     }} />
-                    <Route path="/" render={(routerProps) => 
-                            <>
-                                <NavLink to="/users/new">
-                                    Signup!
-                                </NavLink>
-                                <LoginForm routerProps={routerProps} />
-                                {this.allUsers()}
-                            </>
-                        } 
+                    <Route path="/" render={(routerProps) => {
+                            if (this.props.user) {
+                                return (
+                                    <>
+                                        {this.allUsers()}
+                                    </>
+                                )
+                            } else {
+                                return (
+                                    <LoginForm routerProps={routerProps} />
+                                )
+                            }
+                        }} 
                     />
                 </Switch>
             </div>
