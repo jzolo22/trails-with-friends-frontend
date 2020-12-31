@@ -42,7 +42,7 @@ export const loginUser = (userInfo) => {
         })
             .then(r => r.json())
             .then((userInfo) => {
-                // console.log(userInfo)
+                console.log(userInfo)
                 localStorage.setItem("token", userInfo.jwt)
                 dispatch({type: "login user", payload: userInfo})
             })
