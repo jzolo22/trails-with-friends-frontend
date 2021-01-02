@@ -37,7 +37,7 @@ class HomePage extends React.Component {
                         let user = this.props.users.find(user => user.id === id)
 
                         if (user) {
-                            return <Profile userObj={user} />
+                            return <Profile userObj={user} currentUser={this.props.user}/>
                         } else {
                             return <h2>Loading...</h2>
                         }

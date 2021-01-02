@@ -56,3 +56,17 @@ export const getUsers = () => {
             .then(usersArr => dispatch({type: "add_users_from_fetch", payload: usersArr}))
     }
 }
+
+export const addUserTrail = (userTrailObj) => {
+
+    return function (dispatch) {
+        fetch("http://localhost:3000/user_trails", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(userTrailObj)
+        })
+            .then(r => r.json())
+            .then((userTrailObj) => console.log(userTrailObj))
+            // .then((userTrailObj) => dispatch({type: "add_user_trail", payload: userTrailObj}))
+    }   
+}

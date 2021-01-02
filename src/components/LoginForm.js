@@ -11,8 +11,6 @@ class LoginForm extends Component {
     }
 
 
-    
-
     onChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
