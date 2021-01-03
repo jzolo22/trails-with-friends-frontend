@@ -19,6 +19,12 @@ class Profile extends React.Component {
         })
     }
 
+    totalMiles = () => {
+        let totalMiles = 0;
+        this.props.userObj.trails.forEach(userTrail => totalMiles += userTrail.trail_length)
+    return <h3>{this.props.userObj.name} has walked {totalMiles} miles</h3>
+    }
+
     onDelete = (e) => {
         let userTrailId = parseInt(e.target.value)
         this.props.deleteUserTrail(userTrailId)
@@ -54,9 +60,10 @@ class Profile extends React.Component {
                 <h2>from {this.props.userObj.city}</h2>
                 <h2>Trails:</h2>
                 {this.myTrails()}
+                {this.totalMiles()}
                 {this.props.userObj.id === this.props.currentUser.user.id ? 
                     <>
-                    <h1>Add new trail</h1>
+                    <h3>Add new trail</h3>
                     <form onSubmit={this.onSubmit}>
                         <select name="trails">
                             {this.dropDownTrail()}

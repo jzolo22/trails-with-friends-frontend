@@ -14,11 +14,20 @@ class HomePage extends React.Component {
         this.props.fetchUsers()
     }
 
+    totalMiles = (user) => {
+        let totalMiles = 0;
+        user.trails.forEach(userTrail => totalMiles += userTrail.trail_length)
+
+        return totalMiles
+    }
+
     allUsers = () => {
-        return this.props.users.map(user => {
+        let usersSortedByMileage = this.props.users.sort((a, b) => this.totalMiles(b) - this.totalMiles(a)) 
+        
+        return usersSortedByMileage.map(user => {
             return(
             <NavLink to={`/users/${user.id}`} key={user.id}>
-                <li>{user.name}</li>
+                <li>{user.name} - {this.totalMiles(user)} miles</li>
             </NavLink>
             )
         })
