@@ -1,23 +1,27 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getTrails, addUserTrail} from '../redux/actions'
+import {getTrails, addUserTrail, deleteUserTrail} from '../redux/actions'
 
 class Profile extends React.Component {
-
-    state = {
-        trails: ""
-    }
     
     myTrails = () => {
-        console.log(this.props.userObj.trails)
         return this.props.userObj.trails.map(userTrail => {
             return (
                 <li>{userTrail.trail_name}
                     <br /> 
                     Date: {userTrail.trail_date}
+                    {this.props.userObj.id === this.props.currentUser.user.id ?
+                        <button onClick={this.onDelete} value={userTrail.user_trail_id}>Delete Trail</button> :
+                        null
+                    }
                 </li>
             )
         })
+    }
+
+    onDelete = (e) => {
+        let userTrailId = parseInt(e.target.value)
+        this.props.deleteUserTrail(userTrailId)
     }
 
     componentDidMount(){
@@ -60,7 +64,7 @@ class Profile extends React.Component {
                         <button>Add Trail</button>
                     </form>
                     </>
-                : <h1> </h1> 
+                : null
                 }
 
             </div>
@@ -71,14 +75,16 @@ class Profile extends React.Component {
 const mapStateToProps = (state) => {
     // console.log("Current redux state", state)
     return { 
-        trails: state.trails, 
+        trails: state.trails,
+        user_trails: state.user_trails 
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchTrails: () => dispatch(getTrails()),
-        addUserTrail: (userTrailObj) => dispatch(addUserTrail(userTrailObj))
+        addUserTrail: (userTrailObj) => dispatch(addUserTrail(userTrailObj)),
+        deleteUserTrail: (userTrailId) => dispatch(deleteUserTrail(userTrailId))
     }
 }
 

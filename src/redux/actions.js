@@ -66,7 +66,17 @@ export const addUserTrail = (userTrailObj) => {
             body: JSON.stringify(userTrailObj)
         })
             .then(r => r.json())
-            .then((userTrailObj) => console.log(userTrailObj))
-            // .then((userTrailObj) => dispatch({type: "add_user_trail", payload: userTrailObj}))
+            .then((userTrailObj) => dispatch({type: "add_user_trail", payload: userTrailObj}))
     }   
+}
+
+export const deleteUserTrail = (userTrailId) => {
+    return function () {
+        fetch(`http://localhost:3000/user_trails/${userTrailId}`, {
+            method: "DELETE"
+        })
+            // .then(r => r.json())
+            // .then(console.log())      
+    }
+
 }

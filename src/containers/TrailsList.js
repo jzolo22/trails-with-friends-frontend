@@ -30,7 +30,8 @@ class TrailsList extends React.Component {
                     let trail = this.props.trails.find(trail => trail.id === id)
 
                     if (trail) {
-                        return <TrailShow trailObj={trail}/>
+                        console.log(this.props)
+                        return <TrailShow trailObj={trail} currentUser={this.props.user}/>
                     } else {
                         return <h2>Loading...</h2>
                     }
@@ -51,10 +52,9 @@ class TrailsList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("Current redux state", state)
     return { 
-        trails: state.trails, 
-        user: state.user
+        trails: state.trails 
+        // user: state.user
     }
 }
 

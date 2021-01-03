@@ -3,7 +3,8 @@ import { combineReducers } from 'redux'
 const initialState = {
     trails: [],
     user: null,
-    users: []
+    users: [],
+    user_trails: null
 }
 
 function trailsReducer(state = initialState.trails, action) {
@@ -40,10 +41,22 @@ function usersReducer(state = initialState.users, action) {
     }
 }
 
+function userTrailsReducer(state = initialState.user_trails, action) {
+    switch (action.type) {
+        case "add_user_trail":
+            return action.payload
+        default:
+            return state
+    }
+}
+
+
+
 const rootReducer = combineReducers({
     trails: trailsReducer,
     user: userReducer,
-    users: usersReducer
+    users: usersReducer,
+    user_trails: userTrailsReducer
 })
 
 

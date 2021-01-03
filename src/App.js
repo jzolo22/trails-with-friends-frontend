@@ -41,7 +41,7 @@ class App extends React.Component {
         logout={this.logout}
       />
       <Switch>
-        <Route path="/trails" render={() => <TrailsList />} />
+        <Route path="/trails" render={() => <TrailsList user={this.state.currentUser}/>} />
         <Route path="/" render={() => <HomePage user={this.state.currentUser}/>}/>
       </Switch>
     </div>
