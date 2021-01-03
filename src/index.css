@@ -1,12 +1,1 @@
-body {
-  height: 100%;
-  /* margin: 10px; */
-  font-family: Rockwell, serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}

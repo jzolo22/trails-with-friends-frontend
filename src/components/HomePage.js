@@ -31,9 +31,11 @@ class HomePage extends React.Component {
         
         return usersSortedByMileage.map(user => {
             return(
-            <NavLink to={`/users/${user.id}`} key={user.id}>
-                <li>{user.name} - {this.totalMiles(user)} miles</li>
-            </NavLink>
+            <>
+                <li>
+                    <NavLink to={`/users/${user.id}`} key={user.id}>{user.name}</NavLink> 
+                    - {this.totalMiles(user)} miles</li>
+            </>
             )
         })
     }
@@ -44,7 +46,19 @@ class HomePage extends React.Component {
         return userTrailsSortedByDate.map(userTrail => {
             return (
                 <>
-            <li>{userTrail.user.user_name} hiked {userTrail.trail.trail_name} {moment(userTrail.date).fromNow()}</li> 
+            <li>
+                <img src={userTrail.trail.trail_image} alt={userTrail.trail.trail_name}/>
+                    <br />
+                <NavLink to={`/users/${userTrail.user.user_id}`} key={userTrail.user.user_id}>
+                    {userTrail.user.user_name}
+                </NavLink>  
+                    <span> hiked </span> 
+                <NavLink to={`/users/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
+                    {userTrail.trail.trail_name}  
+                </NavLink>
+                    <br />
+                <span id="time"> {moment(userTrail.date).fromNow()}</span>
+                </li> 
             <br/>
             </>
             )
@@ -54,7 +68,7 @@ class HomePage extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <Switch>
                     <Route path="/users/new" render={() => <NewUserForm />} />
                     <Route path="/users/:id" render={(routerProps) => {
@@ -70,18 +84,18 @@ class HomePage extends React.Component {
                     <Route path="/" render={(routerProps) => {
                             if (this.props.user) {
                                 return (
-                                    <>
-                                    <div className="feed">
-                                        <h3>Recently Hiked Trails:</h3>
-                                        {this.recentTrails()}
+                                    <div className="grid">
+                                        <div id="feed">
+                                            <h3>Recently Hiked Trails:</h3>
+                                            {this.props.user_trails.length > 0 ? this.recentTrails() : <h1>Loading</h1>}
+                                            
+                                        </div>
+                                            
+                                        <div id="leaderboard">
+                                            <h3>Leaderboard</h3>
+                                            {this.allUsers()}
+                                        </div>
                                     </div>
-                                        
-                                    <div className="leaderboard">
-                                        <h3>LeaderBoard</h3>
-                                        {this.allUsers()}
-                                    </div>
-                                        
-                                    </>
                                 )
                             } else {
                                 return (
@@ -91,7 +105,7 @@ class HomePage extends React.Component {
                         }} 
                     />
                 </Switch>
-            </div>
+            </>
     )
     }
 }

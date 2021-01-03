@@ -1,9 +1,97 @@
-body, html {
-  margin: 0;
+html, #root {
   height: 100%;
-  display: inline-grid;
+} 
+
+.App {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+      "nav nav"
+      "feed leaderboard"
+      "feed leaderboard";
+      /* "footer nav"; */
+  grid-template-columns: 70% 1fr;
+  grid-template-rows: 80px 1fr;
+  row-gap: 10px;
+  column-gap: 15px;
+  border-radius: 5px;
+}
+
+body {
+  min-height: 100%;
+  padding: 10px;
+  margin: 10px;
+  font-family: Rockwell, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+
+.grid {
+  display: grid;
+  grid-template-areas: "feed leaderboard";
+  row-gap: 10px;
+  column-gap: 15px;
+
 
 }
+nav {
+  grid-area: nav;
+  display: flex;
+  justify-content: space-around;
+}
+
+#feed {
+  grid-area: feed;
+  list-style-type: none;
+}
+
+#feed > li {
+  border-style: solid;
+  border-width: 2px;
+  border-color: lightgray;
+  padding: 10px;
+  margin: 0px;
+}
+
+#feed > li > img {
+  height: 125px;
+  width: 210px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+span#time {
+  padding-top: 15px;
+  font-size: 12px;
+}
+
+#leaderboard {
+  grid-area: leaderboard;
+  border-style: solid;
+  display: table;
+  list-style-type: none;
+  padding: 15px;
+  /* margin-top: 30%; */
+}
+
+#leaderboard > h3 {
+  text-align: center;
+}
+
+#leaderboard > li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */

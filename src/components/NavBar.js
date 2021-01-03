@@ -18,7 +18,7 @@ class Navbar extends Component {
     render() {
         console.log(this.props)
         return (
-            <div>
+            <nav id="nav">
                 <NavLink to="/trails">
                     <span>Trails</span>
                 </NavLink>
@@ -42,7 +42,7 @@ class Navbar extends Component {
                     </NavLink>
                     </>
                 }
-            </div>
+            </nav>
         )
     }
 }

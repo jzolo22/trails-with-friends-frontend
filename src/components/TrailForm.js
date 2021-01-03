@@ -9,7 +9,8 @@ class TrailForm extends React.Component {
         length: "",
         location: "",
         duration: "",
-        difficulty: ""
+        difficulty: "",
+        image_url: ""
     }
 
     onChange = (e) => {
@@ -37,6 +38,7 @@ class TrailForm extends React.Component {
                 <input type="text" placeholder="location" name="location" value={this.state.location} onChange={this.onChange}/>
                 <input type="text" placeholder="duration" name="duration" value={this.state.duration} onChange={this.onChange}/>
                 <input type="text" placeholder="difficulty" name="difficulty" value={this.state.difficulty} onChange={this.onChange}/>
+                <input type="text" placeholder="image URL" name="image_url" value={this.state.image_url} onChange={this.onChange}/>
                 <button>Submit</button>
             </form>
         )
