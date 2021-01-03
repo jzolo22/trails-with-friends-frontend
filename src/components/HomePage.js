@@ -51,7 +51,17 @@ class HomePage extends React.Component {
                                 )
                             } else {
                                 return (
-                                    <LoginForm routerProps={routerProps} />
+                                    <>
+                                    <div className="hero-text">
+                                        <p style={{fontSize: "24px"}}> Trails With Friends</p>
+                                        <p>Login:</p>
+                                        <LoginForm routerProps={routerProps} />
+                                        <p>or</p>
+                                        <NavLink to="/users/new">
+                                            <p>Sign Up</p>
+                                        </NavLink>
+                                    </div>
+                                    </>
                                 )
                             }
                         }} 
