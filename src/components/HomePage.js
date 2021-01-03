@@ -6,6 +6,9 @@ import Profile from './Profile'
 import LoginForm from './LoginForm'
 import { connect } from 'react-redux'
 import {getUsers, getUserTrails} from '../redux/actions'
+import moment from 'moment';
+moment().format();
+
 
 
 class HomePage extends React.Component {
@@ -41,7 +44,7 @@ class HomePage extends React.Component {
         return userTrailsSortedByDate.map(userTrail => {
             return (
                 <>
-            <li>{userTrail.user.user_name} hiked {userTrail.trail.trail_name} on {userTrail.date}</li> 
+            <li>{userTrail.user.user_name} hiked {userTrail.trail.trail_name} {moment(userTrail.date).fromNow()}</li> 
             <br/>
             </>
             )
