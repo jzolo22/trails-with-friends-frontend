@@ -5,13 +5,15 @@ import NewUserForm from './NewUserForm'
 import Profile from './Profile'
 import LoginForm from './LoginForm'
 import { connect } from 'react-redux'
-import {getUsers} from '../redux/actions'
+import {getUsers, getUserTrails} from '../redux/actions'
 
 
 class HomePage extends React.Component {
 
+   
     componentDidMount() {
         this.props.fetchUsers()
+        this.props.fetchUserTrails()
     }
 
     totalMiles = (user) => {
@@ -33,10 +35,21 @@ class HomePage extends React.Component {
         })
     }
 
-    // <Profile key={user.id} userObj={user} />
+    recentTrails = () => {
+        let userTrailsSortedByDate = this.props.user_trails.sort((a, b) => new Date(b.date) - new Date(a.date)) 
+
+        return userTrailsSortedByDate.map(userTrail => {
+            return (
+                <>
+            <li>{userTrail.user.user_name} hiked {userTrail.trail.trail_name} on {userTrail.date}</li> 
+            <br/>
+            </>
+            )
+        })
+    }
+
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 <Switch>
@@ -55,7 +68,16 @@ class HomePage extends React.Component {
                             if (this.props.user) {
                                 return (
                                     <>
+                                    <div className="feed">
+                                        <h3>Recently Hiked Trails:</h3>
+                                        {this.recentTrails()}
+                                    </div>
+                                        
+                                    <div className="leaderboard">
+                                        <h3>LeaderBoard</h3>
                                         {this.allUsers()}
+                                    </div>
+                                        
                                     </>
                                 )
                             } else {
@@ -72,11 +94,17 @@ class HomePage extends React.Component {
 }
 
 const msp = (state) => {
-    return { users: state.users }
+    return { 
+        users: state.users,
+        user_trails: state.user_trails
+     }
 }
 
 const mdp = (dispatch) => {
-    return {fetchUsers: () => dispatch(getUsers())}
+    return {
+        fetchUsers: () => dispatch(getUsers()),
+        fetchUserTrails: () => dispatch(getUserTrails()),
+    }
 }
 
 export default connect(msp, mdp)(HomePage)

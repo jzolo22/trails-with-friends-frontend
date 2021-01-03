@@ -4,7 +4,7 @@ const initialState = {
     trails: [],
     user: null,
     users: [],
-    user_trails: null
+    user_trails: []
 }
 
 function trailsReducer(state = initialState.trails, action) {
@@ -44,6 +44,8 @@ function usersReducer(state = initialState.users, action) {
 function userTrailsReducer(state = initialState.user_trails, action) {
     switch (action.type) {
         case "add_user_trail":
+            return [action.payload, ...state]
+        case "add_user_trails_from_fetch":
             return action.payload
         default:
             return state

@@ -58,7 +58,6 @@ export const getUsers = () => {
 }
 
 export const addUserTrail = (userTrailObj) => {
-
     return function (dispatch) {
         fetch("http://localhost:3000/user_trails", {
             method: "POST",
@@ -79,4 +78,12 @@ export const deleteUserTrail = (userTrailId) => {
             // .then(console.log())      
     }
 
+}
+
+export const getUserTrails = () => {
+    return function (dispatch) {
+        fetch("http://localhost:3000/user_trails")
+            .then(r => r.json())
+            .then(userTrailsArr => dispatch({type: "add_user_trails_from_fetch", payload: userTrailsArr}))
+    }
 }
