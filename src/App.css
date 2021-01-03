@@ -1,3 +1,26 @@
+body, html {
+  margin: 0;
+  height: 100%;
+  display: inline-grid;
+
+}
+
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: url("/Users/juliazolotarev/Documents/Flatiron/assignments/Mod-4/trails-with-friends/trails-with-friends-frontend/src/assets/trail.jpg");
+
+  /* Set a specific height */
+  height: 100%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+
 /* .App {
   text-align: center;
 }

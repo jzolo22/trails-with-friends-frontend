@@ -35,7 +35,7 @@ class App extends React.Component {
   
   render() {
     return (
-    <div>
+    <div className="hero-image">
       <NavBar 
         user={this.state.currentUser}
         logout={this.logout}
