@@ -1,8 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {NavLink} from 'react-router-dom'
+import moment from 'moment';
 import {getTrails, addUserTrail, deleteUserTrail} from '../redux/actions'
 
 class Profile extends React.Component {
+    
     
     myTrails = () => {
         let currentProfileTrails = this.props.user_trails.filter(userTrail => userTrail.user.user_id === this.props.userObj.id)
@@ -12,9 +15,14 @@ class Profile extends React.Component {
 
         return currentProfileTrails.map(userTrail => {
             return (
-                <li>{userTrail.trail.trail_name}
+                <li>
+                    <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
+                        {userTrail.trail.trail_name}
+                    </NavLink>
                     <br /> 
-                    Date: {userTrail.date}
+                    {/* Date: {userTrail.date} */}
+                    <span id="time"> {moment(userTrail.date).fromNow()}</span>
+                    <br />
                     {this.props.userObj.id === this.props.currentUser.user.id ?
                         <button onClick={this.onDelete} value={userTrail.id}>Delete Trail</button> :
                         null
@@ -25,9 +33,10 @@ class Profile extends React.Component {
     }
 
     totalMiles = () => {
+        let currentProfileTrails = this.props.user_trails.filter(userTrail => userTrail.user.user_id === this.props.userObj.id)
         let totalMiles = 0;
-        this.props.userObj.trails.forEach(userTrail => totalMiles += userTrail.trail_length)
-    return <h3>{this.props.userObj.name} has walked {totalMiles} miles</h3>
+        currentProfileTrails.forEach(userTrail => totalMiles += userTrail.trail.trail_length)
+    return <h3>{this.props.userObj.name} has hiked {totalMiles.toFixed(1)} miles</h3>
     }
 
     onDelete = (e) => {
@@ -63,9 +72,21 @@ class Profile extends React.Component {
         return(
             
             <div>
-                <h2>{this.props.userObj.name}</h2>
+                <h2 >{this.props.userObj.name}</h2>
                 <h2>{this.props.userObj.age} years old</h2>
                 <h2>from {this.props.userObj.city}</h2>
+                {/* {this.props.userObj.id === this.props.currentUser.user.id ? 
+                        <>
+                        <h3>Edit info</h3>
+                        <form onSubmit={this.onSubmit}>
+                            <select name="trails">
+                                {this.dropDownTrail()}
+                            </select>
+                            <button>Add Trail</button>
+                        </form>
+                        </>
+                    : null
+                } */}
                 <h2>Trails:</h2>
                 {this.props.currentUser ? 
                     <> 

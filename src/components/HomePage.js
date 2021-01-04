@@ -34,7 +34,7 @@ class HomePage extends React.Component {
             <>
                 <li>
                     <NavLink to={`/users/${user.id}`} key={user.id}>{user.name}</NavLink> 
-                    - {this.totalMiles(user)} miles</li>
+                    - {this.totalMiles(user).toFixed(1)} miles</li>
             </>
             )
         })
@@ -46,21 +46,21 @@ class HomePage extends React.Component {
         return userTrailsSortedByDate.map(userTrail => {
             return (
                 <>
-            <li>
-                <img src={userTrail.trail.trail_image} alt={userTrail.trail.trail_name}/>
-                    <br />
-                <NavLink to={`/users/${userTrail.user.user_id}`} key={userTrail.user.user_id}>
-                    {userTrail.user.user_name}
-                </NavLink>  
-                    <span> hiked </span> 
-                <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
-                    {userTrail.trail.trail_name}  
-                </NavLink>
-                    <br />
-                <span id="time"> {moment(userTrail.date).fromNow()}</span>
+                <li>
+                    <img src={userTrail.trail.trail_image} alt={userTrail.trail.trail_name}/>
+                        <br />
+                    <NavLink to={`/users/${userTrail.user.user_id}`} key={userTrail.user.user_id}>
+                        {userTrail.user.user_name}
+                    </NavLink>  
+                        <span> hiked </span> 
+                    <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
+                        {userTrail.trail.trail_name}  
+                    </NavLink>
+                        <br />
+                    <span id="time"> {moment(userTrail.date).fromNow()}</span>
                 </li> 
-            <br/>
-            </>
+                <br/>
+                </>
             )
         })
     }

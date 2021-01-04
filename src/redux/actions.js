@@ -94,7 +94,7 @@ export const addUserTrail = (userTrailObj) => {
             .then(r => r.json())
             .then((userTrailObj) => {
                     // window.alert("Trail added to your list!")
-                    // console.log(userTrailObj)
+                    console.log(userTrailObj)
                     dispatch({type: "add_user_trail", payload: userTrailObj})
                 })
             

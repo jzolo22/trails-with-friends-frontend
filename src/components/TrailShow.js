@@ -5,18 +5,20 @@ import {connect} from 'react-redux'
 class TrailShow extends React.Component  {
 
     addUserTrail = () => {
+
         let date = new Date()
 
         this.props.addUserTrail({ 
             trail_id: this.props.trailObj.id,
-            user_id: this.props.currentUser.user.id,
+            user_id: this.props.user.user.id,
             date: date
         })
-        
+
         window.alert("Trail added to your list!")
     }
     
     render(){
+        console.log(this.props)
         return (
             <div className="trail-show">
                 <img src={this.props.trailObj.image_url} alt={this.props.trailObj.name} />
@@ -31,10 +33,14 @@ class TrailShow extends React.Component  {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {user: state.user}
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         addUserTrail: (userTrailObj) => dispatch(addUserTrail(userTrailObj))
     }
 }
 
-export default connect(null, mapDispatchToProps)(TrailShow)
+export default connect(mapStateToProps, mapDispatchToProps)(TrailShow)

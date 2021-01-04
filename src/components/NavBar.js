@@ -14,6 +14,7 @@ class Navbar extends Component {
     localLogout = (e) => {
         console.log(this.props)
         this.props.logout()
+        this.props.history.push("/")
     }
     
     render() {
