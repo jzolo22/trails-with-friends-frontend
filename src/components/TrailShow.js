@@ -17,7 +17,8 @@ class TrailShow extends React.Component  {
     
     render(){
         return (
-            <div>
+            <div className="trail-show">
+                <img src={this.props.trailObj.image_url} alt={this.props.trailObj.name} />
                 <h2>{this.props.trailObj.name}</h2>
                 <h3>{this.props.trailObj.length} miles</h3>
                 <h4>{this.props.trailObj.duration} minutes</h4>

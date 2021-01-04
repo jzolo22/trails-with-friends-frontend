@@ -53,7 +53,7 @@ class HomePage extends React.Component {
                     {userTrail.user.user_name}
                 </NavLink>  
                     <span> hiked </span> 
-                <NavLink to={`/users/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
+                <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
                     {userTrail.trail.trail_name}  
                 </NavLink>
                     <br />

@@ -37,7 +37,14 @@ class TrailForm extends React.Component {
                 <input type="text" placeholder="length" name="length" value={this.state.length} onChange={this.onChange}/>
                 <input type="text" placeholder="location" name="location" value={this.state.location} onChange={this.onChange}/>
                 <input type="text" placeholder="duration" name="duration" value={this.state.duration} onChange={this.onChange}/>
-                <input type="text" placeholder="difficulty" name="difficulty" value={this.state.difficulty} onChange={this.onChange}/>
+
+                <select name="difficulty" onChange={this.onChange}>
+                    <option value="" disabled selected>select difficulty level:</option>
+                    <option value="easy">easy</option>
+                    <option value="medium">medium</option>
+                    <option value="difficult">hard</option>
+                </select>
+
                 <input type="text" placeholder="image URL" name="image_url" value={this.state.image_url} onChange={this.onChange}/>
                 <button>Submit</button>
             </form>
