@@ -67,12 +67,22 @@ class Profile extends React.Component {
         })
     }
 
+    edit = (e) => {
+        console.log(e.target.value)
+    }
+
     render(){
         console.log(this.props.user_trails)
         return(
             
             <div>
-                <h2 >{this.props.userObj.name}</h2>
+                <h2 
+                    onChange={this.edit} 
+                    // contentEditable="true" 
+                    value={this.props.userObj.name}
+                >
+                    {this.props.userObj.name}
+                </h2>
                 <h2>{this.props.userObj.age} years old</h2>
                 <h2>from {this.props.userObj.city}</h2>
                 {/* {this.props.userObj.id === this.props.currentUser.user.id ? 
