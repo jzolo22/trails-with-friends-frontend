@@ -12,7 +12,8 @@ class TrailShow extends React.Component  {
             user_id: this.props.currentUser.user.id,
             date: date
         })
-        // console.log(this.props)
+        
+        window.alert("Trail added to your list!")
     }
     
     render(){

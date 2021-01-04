@@ -59,6 +59,7 @@ class Profile extends React.Component {
                 <h2>{this.props.userObj.age} years old</h2>
                 <h2>from {this.props.userObj.city}</h2>
                 <h2>Trails:</h2>
+                {/* {this.props.currentUser ? this.myTrails() : null} */}
                 {this.myTrails()}
                 {this.totalMiles()}
                 {this.props.userObj.id === this.props.currentUser.user.id ? 

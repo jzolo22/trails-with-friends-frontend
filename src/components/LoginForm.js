@@ -18,7 +18,7 @@ class LoginForm extends Component {
     submitHandler = (e) => {
         e.preventDefault()
         this.props.submitHandler({user: this.state})
-        
+         
     }
     
     render() {

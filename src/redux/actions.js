@@ -43,9 +43,15 @@ export const loginUser = (userInfo) => {
             .then(r => r.json())
             .then((userInfo) => {
                 console.log(userInfo)
-                localStorage.setItem("token", userInfo.jwt)
-                dispatch({type: "login user", payload: userInfo})
+                if(userInfo.message) {
+                    window.alert(userInfo.message)
+                    dispatch({type: "invalid user", payload: userInfo})
+                } else {
+                    localStorage.setItem("token", userInfo.jwt)
+                    dispatch({type: "login user", payload: userInfo})
+                }
             })
+
     }   
 }
 
@@ -65,7 +71,11 @@ export const addUserTrail = (userTrailObj) => {
             body: JSON.stringify(userTrailObj)
         })
             .then(r => r.json())
-            .then((userTrailObj) => dispatch({type: "add_user_trail", payload: userTrailObj}))
+            .then((userTrailObj) => {
+                    // window.alert("Trail added to your list!")
+                    dispatch({type: "add_user_trail", payload: userTrailObj})
+                })
+            
     }   
 }
 

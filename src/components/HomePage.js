@@ -82,7 +82,7 @@ class HomePage extends React.Component {
                         }
                     }} />
                     <Route path="/" render={(routerProps) => {
-                            if (this.props.user) {
+                            if (this.props.user && this.props.users.length > 0) {
                                 return (
                                     <div className="grid">
                                         <div id="feed">

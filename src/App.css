@@ -108,7 +108,7 @@ code {
 
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: url("/Users/juliazolotarev/Documents/Flatiron/assignments/Mod-4/trails-with-friends/trails-with-friends-frontend/src/assets/trail.jpg");
+  /* background-image: url("/Users/juliazolotarev/Documents/Flatiron/assignments/Mod-4/trails-with-friends/trails-with-friends-frontend/src/assets/trail.jpg"); */
 
   /* Set a specific height */
   height: 100%;

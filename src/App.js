@@ -23,7 +23,7 @@ class App extends React.Component {
         .then(r => r.json())
         .then((user) => this.setState({currentUser: user}))
   } else {
-    this.props.history.push('/user/new')
+    this.props.history.push('/')
   }
 }
 
