@@ -5,13 +5,18 @@ import {getTrails, addUserTrail, deleteUserTrail} from '../redux/actions'
 class Profile extends React.Component {
     
     myTrails = () => {
-        return this.props.userObj.trails.map(userTrail => {
+        let currentProfileTrails = this.props.user_trails.filter(userTrail => userTrail.user.user_id === this.props.userObj.id)
+
+        currentProfileTrails.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+
+        return currentProfileTrails.map(userTrail => {
             return (
-                <li>{userTrail.trail_name}
+                <li>{userTrail.trail.trail_name}
                     <br /> 
-                    Date: {userTrail.trail_date}
+                    Date: {userTrail.date}
                     {this.props.userObj.id === this.props.currentUser.user.id ?
-                        <button onClick={this.onDelete} value={userTrail.user_trail_id}>Delete Trail</button> :
+                        <button onClick={this.onDelete} value={userTrail.id}>Delete Trail</button> :
                         null
                     }
                 </li>
@@ -26,6 +31,7 @@ class Profile extends React.Component {
     }
 
     onDelete = (e) => {
+        
         let userTrailId = parseInt(e.target.value)
         this.props.deleteUserTrail(userTrailId)
     }
@@ -53,27 +59,32 @@ class Profile extends React.Component {
     }
 
     render(){
+        console.log(this.props.user_trails)
         return(
+            
             <div>
                 <h2>{this.props.userObj.name}</h2>
                 <h2>{this.props.userObj.age} years old</h2>
                 <h2>from {this.props.userObj.city}</h2>
                 <h2>Trails:</h2>
-                {/* {this.props.currentUser ? this.myTrails() : null} */}
-                {this.myTrails()}
-                {this.totalMiles()}
-                {this.props.userObj.id === this.props.currentUser.user.id ? 
-                    <>
-                    <h3>Add new trail</h3>
-                    <form onSubmit={this.onSubmit}>
-                        <select name="trails">
-                            {this.dropDownTrail()}
-                        </select>
-                        <button>Add Trail</button>
-                    </form>
+                {this.props.currentUser ? 
+                    <> 
+                        {this.myTrails()}
+                        {this.totalMiles()}
+                        {this.props.userObj.id === this.props.currentUser.user.id ? 
+                            <>
+                            <h3>Add new trail</h3>
+                            <form onSubmit={this.onSubmit}>
+                                <select name="trails">
+                                    {this.dropDownTrail()}
+                                </select>
+                                <button>Add Trail</button>
+                            </form>
+                            </>
+                        : null
+                        }
                     </>
-                : null
-                }
+                : null}
 
             </div>
         )

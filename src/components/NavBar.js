@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
+import {logout} from '../redux/actions'
 
 class Navbar extends Component {
     
@@ -47,10 +48,15 @@ class Navbar extends Component {
     }
 }
 
+const msp = (state) => {
+    return { user: state.user }
+}
+
+const mdp = (dispatch) => {
+    return {logout: () => dispatch(logout())}
+}
 
 
-// connect(msp)
-
-export default withRouter( Navbar )
+export default withRouter(connect(msp, mdp)(Navbar))
 
 

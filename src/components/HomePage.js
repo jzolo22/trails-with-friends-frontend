@@ -67,6 +67,7 @@ class HomePage extends React.Component {
 
 
     render() {
+        console.log(this.props)
         return (
             <>
                 <Switch>
@@ -113,7 +114,8 @@ class HomePage extends React.Component {
 const msp = (state) => {
     return { 
         users: state.users,
-        user_trails: state.user_trails
+        user_trails: state.user_trails,
+        user: state.user
      }
 }
 

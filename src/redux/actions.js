@@ -51,8 +51,29 @@ export const loginUser = (userInfo) => {
                     dispatch({type: "login user", payload: userInfo})
                 }
             })
-
     }   
+}
+
+export const checkLogin = (token) => {
+    return function (dispatch) {
+
+        fetch("http://localhost:3000/profile", {
+            method: "GET",
+            headers: {Authorization: `Bearer ${token}`} 
+        })
+            .then(r => r.json())
+            .then((user) => dispatch({type: "check_login", payload: user}))
+    }
+
+}
+
+export const logout = () => {
+    return function (dispatch) {
+        localStorage.removeItem("token")
+        // this.props.history.push('/')
+        dispatch({type: "logout", payload: null})
+    }
+
 }
 
 export const getUsers = () => {
@@ -73,6 +94,7 @@ export const addUserTrail = (userTrailObj) => {
             .then(r => r.json())
             .then((userTrailObj) => {
                     // window.alert("Trail added to your list!")
+                    // console.log(userTrailObj)
                     dispatch({type: "add_user_trail", payload: userTrailObj})
                 })
             
@@ -80,12 +102,11 @@ export const addUserTrail = (userTrailObj) => {
 }
 
 export const deleteUserTrail = (userTrailId) => {
-    return function () {
+    return function (dispatch) {
         fetch(`http://localhost:3000/user_trails/${userTrailId}`, {
             method: "DELETE"
         })
-            // .then(r => r.json())
-            // .then(console.log())      
+            .then(dispatch({type: "delete_user_trail", payload: userTrailId}))      
     }
 
 }
