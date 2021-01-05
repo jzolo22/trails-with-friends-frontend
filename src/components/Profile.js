@@ -26,19 +26,24 @@ class Profile extends React.Component {
 
         return currentProfileTrails.map(userTrail => {
             return (
-                <li>
-                    <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
-                        {userTrail.trail.trail_name}
-                    </NavLink>
-                    <br /> 
-                    {/* Date: {userTrail.date} */}
-                    <span id="time"> {moment(userTrail.date).fromNow()}</span>
-                    <br />
-                    {this.props.userObj.id === this.props.currentUser.user.id ?
-                        <button onClick={this.onDelete} value={userTrail.id}>Delete Trail</button> :
-                        null
-                    }
-                </li>
+                <div className="outer-container">
+                    <img className="profile-img" src={userTrail.trail.trail_image}alt={userTrail.trail.trail_name} />
+
+                    <div className="overlay">
+                        {/* <div className="inner-text"> */}
+                            <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
+                            <h2> {userTrail.trail.trail_name}</h2>
+                            </NavLink>
+                            <br /> 
+                            <span id="time"> {moment(userTrail.date).fromNow()}</span>
+                            <br />
+                            {this.props.userObj.id === this.props.currentUser.user.id ?
+                                <button onClick={this.onDelete} value={userTrail.id}>Delete Trail</button> :
+                                null
+                            }
+                        
+                    </div>
+                </div>
             )
         })
     }
@@ -96,7 +101,7 @@ class Profile extends React.Component {
     }
 
     editPopup = () => (
-        <Popup trigger={<button> Edit Your Info</button>} position="right center">
+        <Popup trigger={<button id="edit-btn"> Edit Your Info</button>} position="right center">
           <div>
                 <form onSubmit={this.onInfoChangeSubmit}>
                     <input type="text" placeholder="name" name="name" value={this.state.name} onChange={this.onEditChange}/>
@@ -111,18 +116,18 @@ class Profile extends React.Component {
         console.log(this.props)
         return(
             
-            <div>
+            <div style={{textAlign: "center"}}>
                 {this.props.currentUser ? 
                 this.props.userObj.id === this.props.currentUser.user.id ?
                 <>
-                    <h2> {this.props.currentUser.user.name} </h2>
-                    <h2> {this.props.currentUser.user.age} years old</h2>
-                    <h2>from {this.props.currentUser.user.city}</h2>
+                    <h2 className="profile_header"> {this.props.currentUser.user.name} </h2>
+                    <h2 className="profile_header"> {this.props.currentUser.user.age} years old</h2>
+                    <h2 className="profile_header">from {this.props.currentUser.user.city}</h2>
                 </> : 
                 <>
-                    <h2> {this.props.userObj.name} </h2>
-                    <h2> {this.props.userObj.age} years old</h2>
-                    <h2>from {this.props.userObj.city}</h2>
+                    <h2 className="profile_header"> {this.props.userObj.name} </h2>
+                    <h2 className="profile_header"> {this.props.userObj.age} years old</h2>
+                    <h2 className="profile_header">from {this.props.userObj.city}</h2>
                 </>
                  : null }
                 {this.props.currentUser ? 
@@ -138,7 +143,9 @@ class Profile extends React.Component {
                 <h2>Trails:</h2>
                 {this.props.currentUser ? 
                     <> 
+                    <div className="picture-grid">
                         {this.myTrails()}
+                    </div>
                         {this.totalMiles()}
                         {this.props.userObj.id === this.props.currentUser.user.id ? 
                             <>
