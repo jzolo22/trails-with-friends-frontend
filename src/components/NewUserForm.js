@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {newUser} from '../redux/actions'
+import {withRouter} from 'react-router-dom'
 
 
 class NewUserForm extends Component {
@@ -22,15 +23,7 @@ class NewUserForm extends Component {
     submitHandler = (e) => {
         e.preventDefault()
         this.props.submitHandler({user: this.state})
-
-        // this.setState({
-        //     name: "",
-        //     length: "",
-        //     location: "",
-        //     duration: "",
-        //     difficulty: ""
-        // })
-        
+        this.props.history.push('/')
     }
     
     render() {
@@ -61,5 +54,5 @@ const msp = (state) => {
 }
 
 
-export default connect(msp, mdp)(NewUserForm)
+export default withRouter(connect(msp, mdp)(NewUserForm))
 

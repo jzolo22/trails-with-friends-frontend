@@ -4,7 +4,7 @@ const initialState = {
     trails: [],
     user: null,
     users: [],
-    user_trails: []
+    user_trails: [],
 }
 
 function trailsReducer(state = initialState.trails, action) {
@@ -13,12 +13,11 @@ function trailsReducer(state = initialState.trails, action) {
             return [...state, action.payload]
         case "add_trails_from_fetch":
             return action.payload
-        //edit trail?
-        //delete trail?
         default:
             return state
     }
 }
+
 
 function userReducer(state = initialState.user, action) {
     switch (action.type) {
@@ -31,6 +30,8 @@ function userReducer(state = initialState.user, action) {
         case "check_login":
             return action.payload
         case "logout":
+            return action.payload
+        case "update_user":
             return action.payload
         default:
             return state
@@ -65,6 +66,7 @@ function userTrailsReducer(state = initialState.user_trails, action) {
 
 const rootReducer = combineReducers({
     trails: trailsReducer,
+    filteredTrails: trailsReducer,
     user: userReducer,
     users: usersReducer,
     user_trails: userTrailsReducer

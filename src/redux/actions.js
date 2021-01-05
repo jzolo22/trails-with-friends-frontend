@@ -29,7 +29,10 @@ export const newUser = (userObj) => {
             body: JSON.stringify(userObj)
         })
             .then(r => r.json())
-            .then((userObj) => dispatch({type: "create user", payload: userObj}))
+            .then((userObj) => {
+                localStorage.setItem("token", userObj.jwt)
+                dispatch({type: "create user", payload: userObj})
+            })
     }   
 }
 
@@ -118,3 +121,19 @@ export const getUserTrails = () => {
             .then(userTrailsArr => dispatch({type: "add_user_trails_from_fetch", payload: userTrailsArr}))
     }
 }
+
+export const userInfoChange = (updatedUserObj) => {
+    return function (dispatch) {
+        fetch(`http://localhost:3000/users/${updatedUserObj.userId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify(updatedUserObj)
+        })
+            .then(r => r.json())
+            .then(updatedUser => dispatch({type: "update_user", payload: {user: updatedUser}}))
+    }
+}
+
+

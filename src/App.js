@@ -8,6 +8,8 @@ import HomePage from './components/HomePage'
 import NavBar from './components/NavBar'
 import {checkLogin} from './redux/actions'
 
+
+
 class App extends React.Component {
 
   // state = {
@@ -23,11 +25,6 @@ class App extends React.Component {
     }
 }
 
-  // logout = () => {
-  //   localStorage.removeItem("token")
-  //   this.props.history.push('/')
-  //   // this.setState({currentUser: null})
-  // }
   
   render() {
     return (

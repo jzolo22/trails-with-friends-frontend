@@ -21,26 +21,27 @@ class Navbar extends Component {
         console.log(this.props)
         return (
             <nav id="nav">
-                <NavLink to="/trails">
-                    <span>Trails</span>
-                </NavLink>
                 <NavLink to="/">
                     <span>Home</span>
                 </NavLink>
+                <NavLink to="/trails">
+                    <span>Trails</span>
+                </NavLink>
+                
                 {this.props.user ? 
                     <>
                     <NavLink to={`/users/${this.props.user.user.id}`}>
                         <span>Hello {this.props.user.user.name}</span>
                     </NavLink>
-                    <span onClick={this.localLogout}>Logout</span>
+                    <span onClick={this.localLogout}>Log Out</span>
                     </>
                  : 
                     <>
                     <NavLink to={'/users/new'}>
-                        Signup
+                        Sign Up
                     </NavLink>
                     <NavLink to={'/'}>
-                        Login
+                        Log In
                     </NavLink>
                     </>
                 }

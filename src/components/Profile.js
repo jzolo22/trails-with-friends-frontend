@@ -2,9 +2,20 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import moment from 'moment';
-import {getTrails, addUserTrail, deleteUserTrail} from '../redux/actions'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import {getTrails, addUserTrail, deleteUserTrail, userInfoChange} from '../redux/actions'
+
+
 
 class Profile extends React.Component {
+    
+    state = {
+        userId: this.props.userObj.id,
+        name: this.props.userObj.name,
+        age: this.props.userObj.age,
+        city: this.props.userObj.city
+    }
     
     
     myTrails = () => {
@@ -36,7 +47,15 @@ class Profile extends React.Component {
         let currentProfileTrails = this.props.user_trails.filter(userTrail => userTrail.user.user_id === this.props.userObj.id)
         let totalMiles = 0;
         currentProfileTrails.forEach(userTrail => totalMiles += userTrail.trail.trail_length)
-    return <h3>{this.props.userObj.name} has hiked {totalMiles.toFixed(1)} miles</h3>
+
+        let name
+        if (this.props.userObj.id === this.props.currentUser.user.id) {
+            name = "You have"
+        } else {
+            name = `${this.props.userObj.name} has`
+        }
+
+        return <h3>{name} hiked {totalMiles.toFixed(1)} miles</h3>
     }
 
     onDelete = (e) => {
@@ -67,36 +86,55 @@ class Profile extends React.Component {
         })
     }
 
-    edit = (e) => {
-        console.log(e.target.value)
+    onInfoChangeSubmit = (e) => {
+        e.preventDefault()
+        this.props.userInfoChange(this.state)
     }
 
+    onEditChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    editPopup = () => (
+        <Popup trigger={<button> Edit Your Info</button>} position="right center">
+          <div>
+                <form onSubmit={this.onInfoChangeSubmit}>
+                    <input type="text" placeholder="name" name="name" value={this.state.name} onChange={this.onEditChange}/>
+                    <input type="text" placeholder="age" name="age" value={this.state.age} onChange={this.onEditChange}/>
+                    <input type="text" placeholder="city" name="city" value={this.state.city} onChange={this.onEditChange}/>
+                    <button>Submit Changes</button>
+                </form></div>
+        </Popup>
+      );
+
     render(){
-        console.log(this.props.user_trails)
+        console.log(this.props)
         return(
             
             <div>
-                <h2 
-                    onChange={this.edit} 
-                    // contentEditable="true" 
-                    value={this.props.userObj.name}
-                >
-                    {this.props.userObj.name}
-                </h2>
-                <h2>{this.props.userObj.age} years old</h2>
-                <h2>from {this.props.userObj.city}</h2>
-                {/* {this.props.userObj.id === this.props.currentUser.user.id ? 
+                {this.props.currentUser ? 
+                this.props.userObj.id === this.props.currentUser.user.id ?
+                <>
+                    <h2> {this.props.currentUser.user.name} </h2>
+                    <h2> {this.props.currentUser.user.age} years old</h2>
+                    <h2>from {this.props.currentUser.user.city}</h2>
+                </> : 
+                <>
+                    <h2> {this.props.userObj.name} </h2>
+                    <h2> {this.props.userObj.age} years old</h2>
+                    <h2>from {this.props.userObj.city}</h2>
+                </>
+                 : null }
+                {this.props.currentUser ? 
+                <>
+                {this.props.userObj.id === this.props.currentUser.user.id ? 
                         <>
-                        <h3>Edit info</h3>
-                        <form onSubmit={this.onSubmit}>
-                            <select name="trails">
-                                {this.dropDownTrail()}
-                            </select>
-                            <button>Add Trail</button>
-                        </form>
+                            {this.editPopup()}
                         </>
                     : null
-                } */}
+                } 
+                </>
+                : null }
                 <h2>Trails:</h2>
                 {this.props.currentUser ? 
                     <> 
@@ -134,7 +172,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchTrails: () => dispatch(getTrails()),
         addUserTrail: (userTrailObj) => dispatch(addUserTrail(userTrailObj)),
-        deleteUserTrail: (userTrailId) => dispatch(deleteUserTrail(userTrailId))
+        deleteUserTrail: (userTrailId) => dispatch(deleteUserTrail(userTrailId)),
+        userInfoChange: (updatedUserObj) => dispatch(userInfoChange(updatedUserObj))
     }
 }
 
