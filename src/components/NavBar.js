@@ -21,6 +21,14 @@ class Navbar extends Component {
         console.log(this.props)
         return (
             <nav id="nav">
+                
+                {this.props.user ? 
+                    <NavLink to={`/users/${this.props.user.user.id}`}>
+                        <span>Hello {this.props.user.user.name}</span>
+                    </NavLink>
+                : null
+                }
+                
                 <NavLink to="/">
                     <span>Home</span>
                 </NavLink>
@@ -28,9 +36,7 @@ class Navbar extends Component {
                 
                 {this.props.user ? 
                     <>
-                    <NavLink to={`/users/${this.props.user.user.id}`}>
-                        <span>Hello {this.props.user.user.name}</span>
-                    </NavLink>
+                    
                     <NavLink to="/trails">
                         <span>All Trails</span>
                     </NavLink>

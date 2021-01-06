@@ -119,12 +119,12 @@ class Profile extends React.Component {
         console.log(this.props)
         return(
             
-            <div style={{textAlign: "center"}}>
+            <div className="profile" style={{textAlign: "center"}}>
                 {this.props.currentUser ? 
                 this.props.userObj.id === this.props.currentUser.user.id ?
                 <>
-                    <h2 className="profile_header"> {this.props.currentUser.user.name} </h2>
-                    <h2 className="profile_header"> {this.props.currentUser.user.age} years old</h2>
+                    <h1 className="profile_name"> {this.props.currentUser.user.name} </h1>
+                    {/* <h2 className="profile_header"> {this.props.currentUser.user.age} years old</h2> */}
                     <h2 className="profile_header">from {this.props.currentUser.user.city}</h2>
                 </> : 
                 <>
@@ -141,7 +141,7 @@ class Profile extends React.Component {
                             {this.totalMiles()}
                             {/* {this.props.userObj.id === this.props.currentUser.user.id ?  */}
                             <>
-                            <h3>Add new trail</h3>
+                            {/* <span>Add new trail</span> */}
                             <form onSubmit={this.onSubmit}>
                                 <select name="trails">
                                     {this.dropDownTrail()}
@@ -154,7 +154,7 @@ class Profile extends React.Component {
                 } 
                 </>
                 : null }
-                <h2>Trails:</h2>
+                {/* <h2>Trails:</h2> */}
                 {this.props.currentUser ? 
                     <> 
                     <div className="picture-grid">

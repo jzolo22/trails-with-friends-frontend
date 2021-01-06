@@ -26,7 +26,7 @@ function userReducer(state = initialState.user, action) {
         case "login user":
             return action.payload
         case "invalid user":
-            return action.payload
+            return state
         case "check_login":
             return action.payload
         case "logout":

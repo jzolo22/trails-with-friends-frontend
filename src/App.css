@@ -59,7 +59,7 @@ nav {
   position: sticky;
   top: 0;
   background-color: white;
-  
+  z-index: 999;
 }
 
 
@@ -74,8 +74,8 @@ nav {
 
 #feed > li {
   border-style: solid;
-  border-width: 2px;
-  border-color: lightgray;
+  /* border-width: 2px; */
+  border-color: white;
   padding: 10px;
   margin: 0px;
   text-align: center;
@@ -85,6 +85,7 @@ nav {
   border-radius: 5px;
   height: 280px;
   width: 350px;
+  margin-bottom: 5px;
 }
 
 #feed > li > a {
@@ -92,7 +93,7 @@ nav {
 }
 
 
-#feed > li > img {
+#feed > li > a > img {
   height: 200px;
   width: 275px;
   /* margin-left: auto;
@@ -111,7 +112,7 @@ span#time {
 
 #leaderboard {
   grid-area: leaderboard;
-  border-color: lightgray;
+  border-color: white;
   border-style: solid;
   display: table;
   list-style-type: none;
@@ -124,7 +125,7 @@ span#time {
   /* margin-top: 30%; */
 }
 
-#leaderboard > h3 {
+#leaderboard > h1 {
   text-align: center;
 }
 
@@ -162,12 +163,20 @@ span#time {
 .picture-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 300px 300px 300px;
+  /* grid-template-rows: 300px 300px 300px; */
   list-style-type: none;
   grid-column-gap: 5px;
   grid-row-gap: 5px;
   padding-left: 10%;
   padding-right: 10%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+
+
+
+.profile{
+  color: #ffffff;
 }
 
 .profile-img {
@@ -181,8 +190,15 @@ span#time {
   opacity: 1; */
 }
 
+.profile_name {
+  font-size: 60px;
+  margin-bottom: 0%;
+}
+
 .outer-container{
   position: relative;
+  border: white solid;
+  border-radius: 5px;
 }
 
 .overlay {
@@ -230,6 +246,34 @@ button:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+/* .hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+/* .hvr-grow:focus, */
+/* .hvr-grow:active {
+    transform: scale(1.1);
+} */ */
+
+a > img {
+  box-shadow: 0 1px, 2px, rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+a > img:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -262,6 +306,11 @@ code {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+}
+
+.hero-text a {
+  color: #ffffff;
+  font-weight: bold;
 }
 
 /* .App {

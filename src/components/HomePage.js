@@ -51,7 +51,9 @@ class HomePage extends React.Component {
             return (
                 <>
                 <li>
-                    <img src={userTrail.trail.trail_image} alt={userTrail.trail.trail_name}/>
+                    <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}> 
+                        <img src={userTrail.trail.trail_image} alt={userTrail.trail.trail_name} className="hvr-grow"/>
+                    </NavLink>
                         <br />
                     <NavLink to={`/users/${userTrail.user.user_id}`} key={userTrail.user.user_id}>
                         {userTrail.user.user_name}
@@ -91,13 +93,12 @@ class HomePage extends React.Component {
                                 return (
                                     <div className="grid">
                                         <div id="feed">
-                                            <h3>Recently Hiked Trails:</h3>
+                                            <h1>Recently Hiked Trails</h1>
                                             {this.props.user_trails.length > 0 ? this.recentTrails() : <h1>Loading</h1>}
-                                            
                                         </div>
                                             
                                         <div id="leaderboard">
-                                            <h3>Leaderboard</h3>
+                                            <h1>Leaderboard</h1>
                                             {this.allUsers()}
                                         </div>
                                     </div>
