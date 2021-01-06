@@ -5,13 +5,6 @@ html, #root {
 } 
 
 .App {
-  background-image: url("https://dg2design.com/wp-content/uploads/2018/05/hiking-trail.jpg");
-  position: fixed;
-  min-width: 100%;
-  min-height: 100%;
-  background-size: cover;
-  background-position: center;
-  height: 100%;
   display: grid;
   grid-template-areas:
       "nav nav"
@@ -26,6 +19,13 @@ html, #root {
 }
 
 body {
+  background-image: url("./assets/trail.jpg");
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
   min-height: 100%;
   padding: 10px;
   padding-top: 0%;
