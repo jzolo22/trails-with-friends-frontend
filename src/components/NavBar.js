@@ -24,14 +24,15 @@ class Navbar extends Component {
                 <NavLink to="/">
                     <span>Home</span>
                 </NavLink>
-                <NavLink to="/trails">
-                    <span>Trails</span>
-                </NavLink>
+                
                 
                 {this.props.user ? 
                     <>
                     <NavLink to={`/users/${this.props.user.user.id}`}>
                         <span>Hello {this.props.user.user.name}</span>
+                    </NavLink>
+                    <NavLink to="/trails">
+                        <span>All Trails</span>
                     </NavLink>
                     <span onClick={this.localLogout}>Log Out</span>
                     </>

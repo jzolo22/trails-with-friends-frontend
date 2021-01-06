@@ -30,18 +30,21 @@ class Profile extends React.Component {
                     <img className="profile-img" src={userTrail.trail.trail_image}alt={userTrail.trail.trail_name} />
 
                     <div className="overlay">
-                        {/* <div className="inner-text"> */}
+                        <div className="image-title">
                             <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
-                            <h2> {userTrail.trail.trail_name}</h2>
+                                {userTrail.trail.trail_name}
                             </NavLink>
+                        </div>
+                        <div className="image-descripton">
                             <br /> 
                             <span id="time"> {moment(userTrail.date).fromNow()}</span>
                             <br />
+                            <br /> 
                             {this.props.userObj.id === this.props.currentUser.user.id ?
                                 <button onClick={this.onDelete} value={userTrail.id}>Delete Trail</button> :
                                 null
                             }
-                        
+                        </div>
                     </div>
                 </div>
             )
@@ -135,6 +138,17 @@ class Profile extends React.Component {
                 {this.props.userObj.id === this.props.currentUser.user.id ? 
                         <>
                             {this.editPopup()}
+                            {this.totalMiles()}
+                            {/* {this.props.userObj.id === this.props.currentUser.user.id ?  */}
+                            <>
+                            <h3>Add new trail</h3>
+                            <form onSubmit={this.onSubmit}>
+                                <select name="trails">
+                                    {this.dropDownTrail()}
+                                </select>
+                                <button>Add Trail</button>
+                            </form>
+                            </>
                         </>
                     : null
                 } 
@@ -146,7 +160,7 @@ class Profile extends React.Component {
                     <div className="picture-grid">
                         {this.myTrails()}
                     </div>
-                        {this.totalMiles()}
+                        {/* {this.totalMiles()}
                         {this.props.userObj.id === this.props.currentUser.user.id ? 
                             <>
                             <h3>Add new trail</h3>
@@ -158,7 +172,7 @@ class Profile extends React.Component {
                             </form>
                             </>
                         : null
-                        }
+                        } */}
                     </>
                 : null}
 

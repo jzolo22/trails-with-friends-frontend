@@ -21,7 +21,11 @@ class HomePage extends React.Component {
 
     totalMiles = (user) => {
         let totalMiles = 0;
-        user.trails.forEach(userTrail => totalMiles += userTrail.trail_length)
+        let leaderboardUserTrails = this.props.user_trails.filter(userTrail => userTrail.user.user_id === user.id)
+
+        console.log(leaderboardUserTrails)
+
+        leaderboardUserTrails.forEach(userTrail => totalMiles += userTrail.trail.trail_length)
 
         return totalMiles
     }
@@ -100,7 +104,16 @@ class HomePage extends React.Component {
                                 )
                             } else {
                                 return (
-                                    <LoginForm routerProps={routerProps} />
+                                    <div className="hero-text">
+                                        <p style={{fontSize: "24px"}}> Trails With Friends</p>
+                                        <p>Login:</p>
+                                        <LoginForm routerProps={routerProps} />
+                                        <p>or</p>
+                                        <NavLink to="/users/new">
+                                            <p>Sign Up</p>
+                                        </NavLink>
+                                    </div>
+                                    // <LoginForm routerProps={routerProps} />
                                 )
                             }
                         }} 
