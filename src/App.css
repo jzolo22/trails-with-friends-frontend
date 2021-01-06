@@ -20,17 +20,18 @@ html, #root {
 
 body {
   background-image: url("./assets/trail.jpg");
-  position: fixed;
+  background-attachment: fixed;
+  position: absolute;
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
   background-position: center;
   height: 100%;
   min-height: 100%;
-  padding: 10px;
+  /* padding: 10px; */
   padding-top: 0%;
-  margin-top: 0%;
-  margin: 10px;
+  margin: 0px;
+  /* margin: 10px; */
   font-family: Rockwell, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -43,20 +44,32 @@ body {
   grid-template-areas: "feed leaderboard";
   row-gap: 10px;
   column-gap: 15px;
-
+  padding-right: 10%;
+  padding-left: 10%;
+  padding-top: 5%;
 
 }
+
 nav {
   grid-area: nav;
   display: flex;
   justify-content: space-around;
   /* background-color: lightgray; */
   padding: 15px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  
 }
+
+
 
 #feed {
   grid-area: feed;
   list-style-type: none;
+  /* padding-left: 15%; */
+  margin-right: 15%;
+  color: #ffffff;
 }
 
 #feed > li {
@@ -65,14 +78,30 @@ nav {
   border-color: lightgray;
   padding: 10px;
   margin: 0px;
+  text-align: center;
+  display: inline-block;
+  background-color: rgb(100, 100, 94.1, .6);
+  overflow-wrap: break-word;
+  border-radius: 5px;
+  height: 280px;
+  width: 350px;
 }
 
+#feed > li > a {
+  color: white;
+}
+
+
 #feed > li > img {
-  height: 125px;
-  width: 210px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  height: 200px;
+  width: 275px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  /* display: block; */
+  border-radius: 5px;
+  margin: 0px;
+  justify-content: center;
+  padding-top: 7%;
 }
 
 span#time {
@@ -82,10 +111,16 @@ span#time {
 
 #leaderboard {
   grid-area: leaderboard;
+  border-color: lightgray;
   border-style: solid;
   display: table;
   list-style-type: none;
   padding: 15px;
+  border-radius: 5px;
+  background-color: rgb(100, 100, 94.1, .6);
+  color: #ffffff;
+  position: sticky;
+  top: 18%;
   /* margin-top: 30%; */
 }
 
@@ -97,6 +132,11 @@ span#time {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+#leaderboard > li > a {
+  color: orange;
+}
+
 
 /* .trail-show {
 
@@ -191,11 +231,12 @@ button:hover {
 }
 
 
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
 
 
 .hero-img {

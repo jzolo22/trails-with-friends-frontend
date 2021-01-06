@@ -56,11 +56,11 @@ class HomePage extends React.Component {
                     <NavLink to={`/users/${userTrail.user.user_id}`} key={userTrail.user.user_id}>
                         {userTrail.user.user_name}
                     </NavLink>  
-                        <span> hiked </span> 
+                    <span> hiked </span> 
                     <NavLink to={`/trails/${userTrail.trail.trail_id}`} key={userTrail.trail.trail_id}>
                         {userTrail.trail.trail_name}  
                     </NavLink>
-                        <br />
+                    <br />
                     <span id="time"> {moment(userTrail.date).fromNow()}</span>
                 </li> 
                 <br/>
@@ -106,7 +106,7 @@ class HomePage extends React.Component {
                                 return (
                                     <div className="hero-text">
                                         <p style={{fontSize: "24px"}}> Trails With Friends</p>
-                                        <p>Login:</p>
+                                        {/* <p>Login:</p> */}
                                         <LoginForm routerProps={routerProps} />
                                         <p>or</p>
                                         <NavLink to="/users/new">
