@@ -165,6 +165,7 @@ span#time {
 
 .trail-show > img {
   height: 350px;
+  width: 600px;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -273,7 +274,18 @@ button:hover {
 }
 
 .trail-list {
-  margin-left: 5%;
+  margin-left: 20%;
+  margin-right: 15%;
+  margin-top: 1%;
+}
+
+.trail-list > div {
+  margin-bottom: 1%;
+  transition: transform .2s;
+}
+
+.trail-list > div:hover {
+  transform: scale(1.1);
 }
 
 .trail-list > div > a > span#trail-name  {
@@ -282,11 +294,29 @@ button:hover {
   text-decoration: none;
 }
 
+/* .trail-list > div > a > span#trail-name:hover  {
+  transform: scale(1.1);
+} */
+
 .trail-list > div > span {
   color: white;
 }
 
+.trail-list > div > a {
+  color: white;
+  margin-bottom: 1%;
+}
 
+
+#search-frm {
+  text-align: center;
+  margin: 3% 0%;
+}
+
+#search-frm > select {
+  font-family: Rockwell, serif;
+  padding: 2.5px;
+}
 
 /* .hvr-grow {
     display: inline-block;

@@ -6,9 +6,9 @@ function Trail(props){
     return (
         <div>
             <NavLink to={`/trails/${props.trailObj.id}`}>
-                <span id="trail-name">{props.trailObj.name} - </span> 
+                <span id="trail-name">{props.trailObj.name}</span> 
             </NavLink> 
-            <span> {props.trailObj.location}</span>
+            <span> - {props.trailObj.location}</span>
         </div>
     )
 }

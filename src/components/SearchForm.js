@@ -12,11 +12,22 @@ class SearchForm extends React.Component {
     render() {
         console.log(this.props.search)
         return (
-        <form>
+        <form id="search-frm">
             <input 
                 type="text" 
-                value={this.props.search} placeholder="search by title" 
+                name="searchByName"
+                value={this.props.searchByName} placeholder="search by name" 
                 onChange={this.props.changeHandler} />
+            <select
+                name="searchByDifficulty"
+                // value={this.props.searchByDifficulty}
+                onChange={this.props.changeHandler}
+            >
+                <option value = "">search by difficulty</option>
+                <option value="easy">easy</option>
+                <option value="medium">medium</option>
+                <option value="hard">hard</option>
+            </select> 
         </form>
         )
     }
