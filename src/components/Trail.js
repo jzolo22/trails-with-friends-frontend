@@ -4,9 +4,12 @@ import {NavLink} from 'react-router-dom'
 function Trail(props){
 
     return (
-        <NavLink to={`/trails/${props.trailObj.id}`}>
-            <h1>{props.trailObj.name}</h1>
-        </NavLink>
+        <div>
+            <NavLink to={`/trails/${props.trailObj.id}`}>
+                <span id="trail-name">{props.trailObj.name} - </span> 
+            </NavLink> 
+            <span> {props.trailObj.location}</span>
+        </div>
     )
 }
 

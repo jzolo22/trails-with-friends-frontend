@@ -38,6 +38,15 @@ body {
   
 }
 
+input {
+  font-family: Rockwell, serif;
+  text-align: center;
+  margin-right: 1%;
+}
+
+#login-btn{
+  margin-top: 1%;
+}
 
 .grid {
   display: grid;
@@ -139,17 +148,34 @@ span#time {
 }
 
 
-/* .trail-show {
+.trail-show {
+  text-align: center;
+  color: white;
+  padding-bottom: 10%;
+}
 
-} */
+.trail-show > h1 {
+  font-size: 54px;
+  margin-bottom: 0px;
+}
 
+.trail-show > button {
+  margin-bottom: 3%;
+}
 
 .trail-show > img {
-  padding-top: 20px;
   height: 350px;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  border: solid 4px;
+  border-color: white;
+  border-radius: 5px;
+  transition: transform .2s;
+}
+
+.trail-show > img:hover {
+  transform: scale(1.1);
 }
 
 .profile_header {
@@ -246,6 +272,22 @@ button:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+.trail-list {
+  margin-left: 5%;
+}
+
+.trail-list > div > a > span#trail-name  {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.trail-list > div > span {
+  color: white;
+}
+
+
+
 /* .hvr-grow {
     display: inline-block;
     vertical-align: middle;
@@ -270,6 +312,11 @@ a > img {
 
 a > img:hover {
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.map {
+  height: 300px;
+  width: 300px;
 }
 
 

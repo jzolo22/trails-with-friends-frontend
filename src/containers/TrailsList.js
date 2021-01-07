@@ -29,6 +29,7 @@ class TrailsList extends React.Component {
             filteredTrails = this.props.trails.filter(trail => trail.name.toLowerCase().includes(this.state.search.toLowerCase()))
         } else {
             filteredTrails = this.props.trails
+            filteredTrails.sort((a, b) => a.name.localeCompare(b.name))
         }
         return filteredTrails.map(trail => <Trail key={trail.id} trailObj={trail} />)
     }
@@ -53,7 +54,9 @@ class TrailsList extends React.Component {
                     return (
                         <>
                         <SearchForm search={this.state.search} changeHandler={this.onChange}/>
-                        {this.allTrails()}
+                        <div className="trail-list">
+                            {this.allTrails()}
+                        </div>
                        <TrailForm />
                         </>
                     )
