@@ -313,9 +313,29 @@ button:hover {
   margin: 3% 0%;
 }
 
-#search-frm > select {
+select {
   font-family: Rockwell, serif;
   padding: 2.5px;
+}
+
+
+.form {
+  text-align: center;
+  font-size: 12px;
+}
+
+.form > input {
+  width: 130px;
+  margin-left: 5px;
+}
+
+.form > button {
+  margin-top: 6%;
+  font-size: 10px;
+}
+
+.form > #city {
+  padding-left: 10px;
 }
 
 /* .hvr-grow {

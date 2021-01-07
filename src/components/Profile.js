@@ -13,7 +13,6 @@ class Profile extends React.Component {
     state = {
         userId: this.props.userObj.id,
         name: this.props.userObj.name,
-        age: this.props.userObj.age,
         city: this.props.userObj.city
     }
     
@@ -104,11 +103,12 @@ class Profile extends React.Component {
     }
 
     editPopup = () => (
-        <Popup trigger={<button id="edit-btn"> Edit Your Info</button>} position="right center">
+        <Popup trigger={<button id="edit-btn"> Edit Your Info</button>} position="right">
           <div>
-                <form onSubmit={this.onInfoChangeSubmit}>
-                    <input type="text" placeholder="name" name="name" value={this.state.name} onChange={this.onEditChange}/>
-                    <input type="text" placeholder="age" name="age" value={this.state.age} onChange={this.onEditChange}/>
+                <form className="form" onSubmit={this.onInfoChangeSubmit}>
+                    <label>Name</label>
+                    <input type="text" placeholder="name" name="name" value={this.state.name} onChange={this.onEditChange}/><br/><br/>
+                    <label id="city">  City</label>
                     <input type="text" placeholder="city" name="city" value={this.state.city} onChange={this.onEditChange}/>
                     <button>Submit Changes</button>
                 </form></div>
