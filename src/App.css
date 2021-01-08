@@ -126,7 +126,7 @@ nav > a:hover {
 }
 
 #feed > li > a:hover {
-  font-size: 22px;
+  font-weight: bold;
 }
 
 #feed > li > a > img {
@@ -176,6 +176,9 @@ span#time {
   text-decoration: none;
 }
 
+#leaderboard > li > a:hover {
+  font-weight: bold;
+}
 
 .trail-show {
   text-align: center;
