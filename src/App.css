@@ -19,7 +19,7 @@ html, #root {
 }
 
 body {
-  background-image: url("./assets/trail.jpg");
+  background-image: url("./assets/trail (1).jpg");
   background-attachment: fixed;
   position: absolute;
   min-width: 100%;
@@ -33,9 +33,14 @@ body {
   margin: 0px;
   /* margin: 10px; */
   font-family: Rockwell, serif;
+  text-shadow: 3px 2px black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
+}
+
+a {
+  text-decoration: none;
 }
 
 input {
@@ -63,7 +68,6 @@ nav {
   grid-area: nav;
   display: flex;
   justify-content: space-around;
-  /* background-color: lightgray; */
   padding: 15px;
   position: sticky;
   top: 0;
@@ -71,6 +75,24 @@ nav {
   z-index: 999;
 }
 
+nav > span {
+  text-shadow: none;
+  transition: transform .2s;
+}
+
+nav > span:hover {
+  transform: scale(1.1);
+}
+
+nav > a {
+  text-shadow:none;
+  color: black;
+  transition: transform .2s;
+}
+
+nav > a:hover {
+  transform: scale(1.1);
+}
 
 
 #feed {
@@ -99,8 +121,13 @@ nav {
 
 #feed > li > a {
   color: white;
+  text-decoration: none;
+  transition: transform .2s;
 }
 
+#feed > li > a:hover {
+  font-size: 22px;
+}
 
 #feed > li > a > img {
   height: 200px;
@@ -111,7 +138,8 @@ nav {
   border-radius: 5px;
   margin: 0px;
   justify-content: center;
-  padding-top: 7%;
+  margin-top: 7%;
+  /* box-shadow: 2px 3px darkgray; */
 }
 
 span#time {
@@ -145,6 +173,7 @@ span#time {
 
 #leaderboard > li > a {
   color: orange;
+  text-decoration: none;
 }
 
 
@@ -322,6 +351,7 @@ select {
 .form {
   text-align: center;
   font-size: 12px;
+  text-shadow: none;
 }
 
 .form > input {
@@ -337,6 +367,30 @@ select {
 .form > #city {
   padding-left: 10px;
 }
+
+.btn-div {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form-add {
+  text-align: center;
+  font-size: 12px;
+}
+
+.form-add > input {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.form-add > select {
+  width: 158px;
+  margin-bottom: 10px;
+  padding: 1px 2px;
+  text-align-last:center;
+}
+
+
 
 /* .hvr-grow {
     display: inline-block;
@@ -356,12 +410,12 @@ select {
 } */ */
 
 a > img {
-  box-shadow: 0 1px, 2px, rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
   transition: box-shadow 0.3s ease-in-out;
 }
 
 a > img:hover {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
 }
 
 .map {

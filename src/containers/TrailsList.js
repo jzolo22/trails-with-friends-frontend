@@ -63,10 +63,10 @@ class TrailsList extends React.Component {
                     return (
                         <>
                         <SearchForm searchByName={this.state.searchByName} searchByDifficulty={this.state.searchByDifficulty} changeHandler={this.onChange}/>
+                       <TrailForm />
                         <div className="trail-list">
                             {this.allTrails()}
                         </div>
-                       <TrailForm />
                         </>
                     )
                     

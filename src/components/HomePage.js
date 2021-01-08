@@ -100,7 +100,7 @@ class HomePage extends React.Component {
                                         <div id="leaderboard">
                                             <h1>Leaderboard</h1>
                                             {this.allUsers()}
-                                        </div>
+                                        </div>  
                                     </div>
                                 )
                             } else {

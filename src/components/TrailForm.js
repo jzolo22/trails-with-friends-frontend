@@ -1,6 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addTrail } from '../redux/actions'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import {withRouter} from 'react-router-dom'
 
 class TrailForm extends React.Component {
 
@@ -20,7 +23,7 @@ class TrailForm extends React.Component {
     submitHandler = (e) => {
         e.preventDefault()
         this.props.submitHandler(this.state)
-
+        this.props.history.push('/trails')
         // this.setState({
         //     name: "",
         //     length: "",
@@ -32,22 +35,24 @@ class TrailForm extends React.Component {
     
     render() {
         return (
-            <form onSubmit={this.submitHandler}>
-                <input type="text" placeholder="name" name="name" value={this.state.name} onChange={this.onChange}/>
-                <input type="text" placeholder="length (in miles)" name="length" value={this.state.length} onChange={this.onChange}/>
-                <input type="text" placeholder="location (city, state)" name="location" value={this.state.location} onChange={this.onChange}/>
-                <input type="text" placeholder="duration (in minutes)" name="duration" value={this.state.duration} onChange={this.onChange}/>
+            <Popup trigger={<div className="btn-div"><button > Add a New Trail</button></div>} position="center">
+                <form className="form-add" onSubmit={this.submitHandler}>
+                    <input type="text" placeholder="name" name="name" value={this.state.name} onChange={this.onChange}/>
+                    <input type="text" placeholder="length (in miles)" name="length" value={this.state.length} onChange={this.onChange}/>
+                    <input type="text" placeholder="location (city, state)" name="location" value={this.state.location} onChange={this.onChange}/>
+                    <input type="text" placeholder="duration (in minutes)" name="duration" value={this.state.duration} onChange={this.onChange}/>
 
-                <select name="difficulty" onChange={this.onChange}>
-                    <option value="" disabled selected>select difficulty level:</option>
-                    <option value="easy">easy</option>
-                    <option value="medium">medium</option>
-                    <option value="difficult">hard</option>
-                </select>
+                    <select name="difficulty" onChange={this.onChange}>
+                        <option value="" disabled selected> difficulty level:</option>
+                        <option value="easy">easy</option>
+                        <option value="medium">medium</option>
+                        <option value="difficult">hard</option>
+                    </select>
 
-                <input type="text" placeholder="image URL" name="image_url" value={this.state.image_url} onChange={this.onChange}/>
-                <button>Submit</button>
-            </form>
+                    <input type="text" placeholder="image URL" name="image_url" value={this.state.image_url} onChange={this.onChange}/>
+                    <button>Submit</button>
+                </form>
+        </Popup>
         )
     }
 }
@@ -56,4 +61,4 @@ const mdp = (dispatch) => {
     return {submitHandler: (trailObj) => dispatch(addTrail(trailObj)) }
 }
 
-export default connect(null, mdp)(TrailForm)
+export default connect(null, mdp)(withRouter(TrailForm))
