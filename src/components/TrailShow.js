@@ -53,7 +53,7 @@ class TrailShow extends React.Component  {
                 }   
 
                 {this.state.clicked? 
-                    <iframe className="map" src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE_API_KEY}&origin=${this.props.user.user.city}&destination=${this.props.trailObj.name} ${this.props.trailObj.location}&mode=driving&zoom=8`}> 
+                    <iframe className="map" src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE_API_KEY}&origin=${this.props.user.user.city}&destination=${this.props.trailObj.name} ${this.props.trailObj.location}&mode=driving&zoom=4`}> 
                 </iframe>
                 : null}
                 
