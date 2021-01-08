@@ -33,7 +33,7 @@ class HomePage extends React.Component {
     allUsers = () => {
         let usersSortedByMileage = this.props.users.sort((a, b) => this.totalMiles(b) - this.totalMiles(a)) 
         
-        return usersSortedByMileage.map(user => {
+        return usersSortedByMileage.slice(0, 13).map(user => {
             return(
             <>
                 <li>

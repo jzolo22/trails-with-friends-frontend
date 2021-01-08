@@ -28,15 +28,15 @@ class NewUserForm extends Component {
     
     render() {
         return (
-            <div>
-                <h1>New User Form!</h1>
-                <form onSubmit={this.submitHandler}>
+            <div className="new-user-form">
+                <h1>Sign Up</h1>
+                <form className="form" onSubmit={this.submitHandler}>
                     <input type="text" placeholder="name" name="name" value={this.state.name} onChange={this.onChange}/>
                     <input type="text" placeholder="age" name="age" value={this.state.age} onChange={this.onChange}/>
                     <input type="text" placeholder="city" name="city" value={this.state.city} onChange={this.onChange}/>
                     <input type="text" placeholder="username" name="username" value={this.state.username} onChange={this.onChange}/>
-                    <input type="text" placeholder="password" name="password" value={this.state.password} onChange={this.onChange}/>
-                    <input type="text" placeholder="confirm password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.onChange}/>
+                    <input type="password" placeholder="password" name="password" value={this.state.password} onChange={this.onChange}/>
+                    <input type="password" placeholder="confirm password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.onChange}/>
                 <button>Submit</button>
                 </form>
             </div>
