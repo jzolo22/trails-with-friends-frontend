@@ -130,7 +130,7 @@ class Profile extends React.Component {
                     <h2 className="profile_header">from {this.props.currentUser.user.city}</h2>
                 </> : 
                 <>
-                    <h1 style={{fontSize: "60px"}} className="profile_header"> {this.props.userObj.name} </h1>
+                    <h1 style={{fontSize: "60px", marginBottom: "0px"}} className="profile_header"> {this.props.userObj.name} </h1>
                     <h2 className="profile_header"> {this.props.userObj.age} years old</h2>
                     <h2 className="profile_header">from {this.props.userObj.city}</h2>
                 </>
