@@ -1,7 +1,7 @@
 export const addTrail = (trailObj) => {
 
     return function (dispatch) {
-        fetch("http://localhost:3000/trails", {
+        fetch("https://trails-with-friends.herokuapp.com/trails", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(trailObj)
@@ -15,7 +15,7 @@ export const getTrails = () => {
     // console.log("first dispatch invoked")
     return function (dispatch) {
         // console.log("nested function invoked")
-        fetch("http://localhost:3000/trails")
+        fetch("https://trails-with-friends.herokuapp.com/trails")
             .then(r => r.json())
             .then(trailsArr => dispatch({type: "add_trails_from_fetch", payload: trailsArr}))
     }
@@ -23,7 +23,7 @@ export const getTrails = () => {
 
 export const newUser = (userObj) => {
     return function (dispatch) {
-        fetch("http://localhost:3000/users", {
+        fetch("https://trails-with-friends.herokuapp.com/users", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(userObj)
@@ -38,7 +38,7 @@ export const newUser = (userObj) => {
 
 export const loginUser = (userInfo) => {
     return function (dispatch) {
-        fetch("http://localhost:3000/login", {
+        fetch("https://trails-with-friends.herokuapp.com/login", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(userInfo)
@@ -60,7 +60,7 @@ export const loginUser = (userInfo) => {
 export const checkLogin = (token) => {
     return function (dispatch) {
 
-        fetch("http://localhost:3000/profile", {
+        fetch("https://trails-with-friends.herokuapp.com/profile", {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`} 
         })
@@ -81,7 +81,7 @@ export const logout = () => {
 
 export const getUsers = () => {
     return function (dispatch) {
-        fetch("http://localhost:3000/users")
+        fetch("https://trails-with-friends.herokuapp.com/users")
             .then(r => r.json())
             .then(usersArr => dispatch({type: "add_users_from_fetch", payload: usersArr}))
     }
@@ -89,7 +89,7 @@ export const getUsers = () => {
 
 export const addUserTrail = (userTrailObj) => {
     return function (dispatch) {
-        fetch("http://localhost:3000/user_trails", {
+        fetch("https://trails-with-friends.herokuapp.com/user_trails", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(userTrailObj)
@@ -106,7 +106,7 @@ export const addUserTrail = (userTrailObj) => {
 
 export const deleteUserTrail = (userTrailId) => {
     return function (dispatch) {
-        fetch(`http://localhost:3000/user_trails/${userTrailId}`, {
+        fetch(`https://trails-with-friends.herokuapp.com/user_trails/${userTrailId}`, {
             method: "DELETE"
         })
             .then(dispatch({type: "delete_user_trail", payload: userTrailId}))      
@@ -116,7 +116,7 @@ export const deleteUserTrail = (userTrailId) => {
 
 export const getUserTrails = () => {
     return function (dispatch) {
-        fetch("http://localhost:3000/user_trails")
+        fetch("https://trails-with-friends.herokuapp.com/user_trails")
             .then(r => r.json())
             .then(userTrailsArr => dispatch({type: "add_user_trails_from_fetch", payload: userTrailsArr}))
     }
@@ -124,7 +124,7 @@ export const getUserTrails = () => {
 
 export const userInfoChange = (updatedUserObj) => {
     return function (dispatch) {
-        fetch(`http://localhost:3000/users/${updatedUserObj.userId}`, {
+        fetch(`https://trails-with-friends.herokuapp.com/${updatedUserObj.userId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
