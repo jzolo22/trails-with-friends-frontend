@@ -49,11 +49,11 @@ class TrailShow extends React.Component  {
                 <h3>Difficulty level: {this.props.trailObj.difficulty}</h3>
 
                 {this.state.clicked? null :
-                <iframe className="map"  src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_API_KEY}&q=${this.props.trailObj.name} ${this.props.trailObj.location}&zoom=8`}> </iframe>
+                <iframe title="map2" className="map"  src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_API_KEY}&q=${this.props.trailObj.name} ${this.props.trailObj.location}&zoom=8`}> </iframe>
                 }   
 
                 {this.state.clicked? 
-                    <iframe className="map" src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE_API_KEY}&origin=${this.props.user.user.city}&destination=${this.props.trailObj.name} ${this.props.trailObj.location}&mode=driving&zoom=4`}> 
+                    <iframe title="map2" className="map" src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE_API_KEY}&origin=${this.props.user.user.city}&destination=${this.props.trailObj.name} ${this.props.trailObj.location}&mode=driving&zoom=4`}> 
                 </iframe>
                 : null}
                 
