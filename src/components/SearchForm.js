@@ -1,6 +1,4 @@
 import React from 'react'
-// import {connect} from 'react-redux'
-// import {search} from '../redux/actions'
 
 class SearchForm extends React.Component {
 
@@ -8,9 +6,7 @@ class SearchForm extends React.Component {
         this.props.changeHandler(e)
     }
     
-
     render() {
-        console.log(this.props.search)
         return (
         <form id="search-frm">
             <input 
@@ -20,7 +16,6 @@ class SearchForm extends React.Component {
                 onChange={this.props.changeHandler} />
             <select
                 name="searchByDifficulty"
-                // value={this.props.searchByDifficulty}
                 onChange={this.props.changeHandler}
             >
                 <option value = "">search by difficulty</option>
@@ -33,8 +28,5 @@ class SearchForm extends React.Component {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {search: (searchValue) => dispatch(search(searchValue))}
-// }
 
 export default SearchForm

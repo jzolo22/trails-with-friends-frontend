@@ -18,7 +18,6 @@ class LoginForm extends Component {
     submitHandler = (e) => {
         e.preventDefault()
         this.props.submitHandler({user: this.state})
-         
     }
     
     render() {
@@ -40,7 +39,6 @@ const mdp = (dispatch) => {
 }
 
 const msp = (state) => {
-    console.log("Current redux state", state)
     return { user: state.user }
 }
 

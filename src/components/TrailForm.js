@@ -24,13 +24,6 @@ class TrailForm extends React.Component {
         e.preventDefault()
         this.props.submitHandler(this.state)
         this.props.history.push('/trails')
-        // this.setState({
-        //     name: "",
-        //     length: "",
-        //     location: "",
-        //     duration: "",
-        //     difficulty: ""
-        // })
     }
     
     render() {

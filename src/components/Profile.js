@@ -16,12 +16,10 @@ class Profile extends React.Component {
         city: this.props.userObj.city
     }
     
-    
     myTrails = () => {
         let currentProfileTrails = this.props.user_trails.filter(userTrail => userTrail.user.user_id === this.props.userObj.id)
 
         currentProfileTrails.sort((a, b) => new Date(b.date) - new Date(a.date))
-
 
         return currentProfileTrails.map(userTrail => {
             return (
@@ -66,7 +64,6 @@ class Profile extends React.Component {
     }
 
     onDelete = (e) => {
-        
         let userTrailId = parseInt(e.target.value)
         this.props.deleteUserTrail(userTrailId)
     }
@@ -118,15 +115,12 @@ class Profile extends React.Component {
       );
 
     render(){
-        console.log(this.props)
         return(
-            
             <div className="profile" style={{textAlign: "center"}}>
                 {this.props.currentUser ? 
                 this.props.userObj.id === this.props.currentUser.user.id ?
                 <>
                     <h1 className="profile_name"> {this.props.currentUser.user.name} </h1>
-                    {/* <h2 className="profile_header"> {this.props.currentUser.user.age} years old</h2> */}
                     <h2 className="profile_header">from {this.props.currentUser.user.city}</h2>
                 </> : 
                 <>
@@ -141,9 +135,7 @@ class Profile extends React.Component {
                         <>
                             {this.editPopup()}
                             {this.totalMiles()}
-                            {/* {this.props.userObj.id === this.props.currentUser.user.id ?  */}
                             <>
-                            {/* <span>Add new trail</span> */}
                             <form onSubmit={this.onSubmit}>
                                 <select name="trails">
                                     {this.dropDownTrail()}
@@ -156,25 +148,11 @@ class Profile extends React.Component {
                 } 
                 </>
                 : null }
-                {/* <h2>Trails:</h2> */}
                 {this.props.currentUser ? 
                     <> 
                     <div className="picture-grid">
                         {this.myTrails()}
                     </div>
-                        {/* {this.totalMiles()}
-                        {this.props.userObj.id === this.props.currentUser.user.id ? 
-                            <>
-                            <h3>Add new trail</h3>
-                            <form onSubmit={this.onSubmit}>
-                                <select name="trails">
-                                    {this.dropDownTrail()}
-                                </select>
-                                <button>Add Trail</button>
-                            </form>
-                            </>
-                        : null
-                        } */}
                     </>
                 : null}
 
@@ -184,7 +162,6 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log("Current redux state", state)
     return { 
         trails: state.trails,
         user_trails: state.user_trails 

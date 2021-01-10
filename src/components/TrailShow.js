@@ -1,7 +1,6 @@
 import React from 'react'
 import { addUserTrail } from '../redux/actions'
 import {connect} from 'react-redux'
-// import REACT_APP_GOOGLE_API_KEY from '../.env'
 
 class TrailShow extends React.Component  {
 
@@ -33,11 +32,9 @@ class TrailShow extends React.Component  {
         } else {
             return `${hours} hours and ${minutes} minutes to complete` 
         }
-        
     }
     
     render(){
-        console.log(this.props)
         return (
             <div className="trail-show">
                 <h1>{this.props.trailObj.name}</h1>
@@ -49,7 +46,7 @@ class TrailShow extends React.Component  {
                 <h3>Difficulty level: {this.props.trailObj.difficulty}</h3>
 
                 {this.state.clicked? null :
-                <iframe title="map2" className="map"  src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_API_KEY}&q=${this.props.trailObj.name} ${this.props.trailObj.location}&zoom=8`}> </iframe>
+                <iframe title="map1" className="map"  src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_API_KEY}&q=${this.props.trailObj.name} ${this.props.trailObj.location}&zoom=8`}> </iframe>
                 }   
 
                 {this.state.clicked? 
@@ -57,14 +54,10 @@ class TrailShow extends React.Component  {
                 </iframe>
                 : null}
                 
-                
                     <br />
                 <button onClick={this.clickDirections}>
                     {this.state.clicked ? "See trail on map" : "Get directions" }
                     </button>
-
-
-                
             </div>
         )
     }

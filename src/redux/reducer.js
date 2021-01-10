@@ -50,9 +50,7 @@ function usersReducer(state = initialState.users, action) {
 function userTrailsReducer(state = initialState.user_trails, action) {
     switch (action.type) {
         case "add_user_trail":
-            // console.log(action.payload)
             return [action.payload.user_trail, ...state]
-            // return ["str1", "str2"]
         case "add_user_trails_from_fetch":
             return action.payload
         case "delete_user_trail":

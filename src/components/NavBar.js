@@ -6,19 +6,13 @@ import {withRouter} from 'react-router-dom'
 import {logout} from '../redux/actions'
 
 class Navbar extends Component {
-    
-    state = {
-        refresh: ""
-    }
-    
+  
     localLogout = (e) => {
-        console.log(this.props)
         this.props.logout()
         this.props.history.push("/")
     }
     
     render() {
-        console.log(this.props)
         return (
             <nav id="nav">
                 

@@ -49,7 +49,6 @@ const mdp = (dispatch) => {
 }
 
 const msp = (state) => {
-    console.log("Current redux state", state)
     return { user: state.user }
 }
 

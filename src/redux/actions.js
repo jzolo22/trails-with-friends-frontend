@@ -12,9 +12,7 @@ export const addTrail = (trailObj) => {
 }
 
 export const getTrails = () => {
-    // console.log("first dispatch invoked")
     return function (dispatch) {
-        // console.log("nested function invoked")
         fetch("https://trails-with-friends.herokuapp.com/trails")
             .then(r => r.json())
             .then(trailsArr => dispatch({type: "add_trails_from_fetch", payload: trailsArr}))
@@ -73,7 +71,6 @@ export const checkLogin = (token) => {
 export const logout = () => {
     return function (dispatch) {
         localStorage.removeItem("token")
-        // this.props.history.push('/')
         dispatch({type: "logout", payload: null})
     }
 
@@ -96,7 +93,6 @@ export const addUserTrail = (userTrailObj) => {
         })
             .then(r => r.json())
             .then((userTrailObj) => {
-                    // window.alert("Trail added to your list!")
                     console.log(userTrailObj)
                     dispatch({type: "add_user_trail", payload: userTrailObj})
                 })
