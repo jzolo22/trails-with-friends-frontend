@@ -53,7 +53,6 @@ class TrailsList extends React.Component {
                     let trail = this.props.trails.find(trail => trail.id === id)
 
                     if (trail) {
-                        console.log(this.props)
                         return <TrailShow trailObj={trail} currentUser={this.props.user}/>
                     } else {
                         return <h2>Loading...</h2>

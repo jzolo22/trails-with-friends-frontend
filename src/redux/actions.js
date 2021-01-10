@@ -43,7 +43,6 @@ export const loginUser = (userInfo) => {
         })
             .then(r => r.json())
             .then((userInfo) => {
-                console.log(userInfo)
                 if(userInfo.message) {
                     window.alert(userInfo.message)
                     dispatch({type: "invalid user", payload: userInfo})
@@ -93,7 +92,6 @@ export const addUserTrail = (userTrailObj) => {
         })
             .then(r => r.json())
             .then((userTrailObj) => {
-                    console.log(userTrailObj)
                     dispatch({type: "add_user_trail", payload: userTrailObj})
                 })
             
