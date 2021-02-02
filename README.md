@@ -1,4 +1,4 @@
-# Welcome to Trails With Friends
+# Trails With Friends
 
 Trails With Friends is a web app to keep track of hikes you've completed in a social and visually pleasing way. It also allows you to compare your hiking mileage with other users of the site on a leaderboard that's featured on the home page. 
 
